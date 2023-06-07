@@ -1,0 +1,87 @@
+*{
+    margin:0;
+    padding:0;
+    text-decoration: none;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+.login-page{
+
+ width:100%;
+ min-height: 100vh;
+ background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url("../../assets/salon.jpg");
+ background-repeat: no-repeat;
+ background-size: cover;
+ 
+}
+.login-part{
+
+  align-items: center;
+    display: flex;
+    flex-direction: column;
+    width:100%;
+    min-height: 100vh;
+    justify-content: center;
+   padding-bottom:50px;
+
+}
+.login-button {
+    background-color: #4CAF50; /* Green */
+    
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    margin-top:20px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: 0.3s ease;
+  }
+  
+  .login-button:hover {
+    background-color: #45a049; /* Darker green */
+  }
+  
+  .login-button:active {
+    transform: scale(0.7); /* Active color */
+  }
+  
+  .login-button.animate {
+    animation: pulse 1s infinite;
+  }
+  
+  @keyframes pulse {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.2);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+  
+
+
+  .forgot-password{
+    color: white;
+    width: fit-content;
+    font-size: 11px;
+    text-shadow: 2px 5px 4px rgba(0, 0, 0, 1);
+    letter-spacing: 3px;
+    cursor: pointer;
+    /* font-weight: bold; */
+    margin-top: 5px;
+    font-family: 'Poppins', sans-serif;
+    transition: 1.5s ease;
+  }
+
+  .forgot-password:hover{
+    transform: scale(1.3);
+  }

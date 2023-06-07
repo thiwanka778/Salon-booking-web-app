@@ -1,0 +1,13 @@
+.Container {
+    margin: 24px auto 0;
+    padding: 0;
+    width: 80%;
+    text-align: center;
+    font-size: 2.5rem;
+    color:white;
+    text-shadow: 4px 4px 0.5px black;
+    font-family: 'Poppins', sans-serif  ;
+    letter-spacing: 2px;
+    font-weight: bold;
+  }
+  

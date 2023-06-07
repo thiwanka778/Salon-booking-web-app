@@ -1,0 +1,16 @@
+.Container {
+    margin: 0 auto;
+    padding: 0;
+    text-transform: uppercase;
+    width: 90%;
+    text-align: center;
+    font-size: 5rem;
+    /* color:white; */
+    color:#fa1905;
+     text-shadow: 4px 4px 0.5px white; 
+    font-family: 'Poppins', sans-serif  ;
+    letter-spacing: 3px;
+    font-weight: bold;
+  }
+
+  

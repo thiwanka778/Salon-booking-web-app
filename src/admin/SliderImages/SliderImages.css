@@ -1,0 +1,223 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+    text-decoration: none;
+    scroll-behavior: smooth;
+}
+
+.slider-images{
+    padding-top:70px ;
+    min-height: 100vh;
+}
+.file-upload{
+    align-items: center;
+    justify-content: center;
+    /* background-color: red; */
+    display:flex;
+    flex-direction: column;
+    width:100%;
+    margin-top:60px;
+
+}
+input[type="file"] {
+    display: none;
+}
+.custom-file-upload {
+    font-size: 1.2rem;
+    padding: 1rem 2.5rem;
+    border: none;
+    outline: none;
+    margin-bottom: 70px;
+    border-radius: 0.4rem;
+    cursor: pointer;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    background-color: rgb(14, 14, 26);
+    color: rgb(234, 234, 234);
+    font-weight: 700;
+    transition: 0.6s;
+    box-shadow: 0px 0px 60px #1f4c65;
+    -webkit-box-reflect: below 10px linear-gradient(to bottom, rgba(0,0,0,0.0), rgba(0,0,0,0.4));
+}
+
+.custom-file-upload:active{
+    scale: 0.92;
+}
+  
+  .custom-file-upload:hover {
+    background: rgb(2,29,78);
+    background: linear-gradient(270deg, rgba(2, 29, 78, 0.681) 0%, rgba(31, 215, 232, 0.873) 60%);
+    color: rgb(4, 4, 38);
+  }
+
+
+  .upload-to-firebase{
+    font-family: 'Poppins', sans-serif ;
+    margin-top:2rem;
+    margin-bottom: 2rem;
+    position: relative;
+    padding: 10px 20px;
+    border-radius: 7px;
+    border: 1px solid rgb(61, 106, 255);
+    font-size: 14px;
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 2px;
+    background: transparent;
+    color: black;
+    overflow: hidden;
+    box-shadow: 0 0 0 0 transparent;
+    -webkit-transition: all 0.2s ease-in;
+    -moz-transition: all 0.2s ease-in;
+    transition: all 0.2s ease-in;
+    cursor: pointer;
+  }
+
+
+  
+  
+  .upload-to-firebase:hover {
+    background: rgb(61, 106, 255);
+    box-shadow: 0 0 30px 5px rgba(0, 142, 236, 0.815);
+    -webkit-transition: all 0.2s ease-out;
+    -moz-transition: all 0.2s ease-out;
+    transition: all 0.2s ease-out;
+  }
+  
+  .upload-to-firebase:hover::before {
+    -webkit-animation: sh02 0.5s 0s linear;
+    -moz-animation: sh02 0.5s 0s linear;
+    animation: sh02 0.5s 0s linear;
+  }
+  
+  .upload-to-firebase::before {
+    content: '';
+    display: block;
+    width: 0px;
+    height: 86%;
+    position: absolute;
+    top: 7%;
+    left: 0%;
+    opacity: 0;
+    background: #fff;
+    box-shadow: 0 0 50px 30px #fff;
+    -webkit-transform: skewX(-20deg);
+    -moz-transform: skewX(-20deg);
+    -ms-transform: skewX(-20deg);
+    -o-transform: skewX(-20deg);
+    transform: skewX(-20deg);
+  }
+  
+  @keyframes sh02 {
+    from {
+      opacity: 0;
+      left: 0%;
+    }
+  
+    50% {
+      opacity: 1;
+    }
+  
+    to {
+      opacity: 0;
+      left: 100%;
+    }
+  }
+  
+  .upload-to-firebase:active {
+    box-shadow: 0 0 0 0 transparent;
+    -webkit-transition: box-shadow 0.2s ease-in;
+    -moz-transition: box-shadow 0.2s ease-in;
+    transition: box-shadow 0.2s ease-in;
+  }
+
+
+  .save-btn {
+    padding: 17px 40px;
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif ;
+    font-weight: bold;
+    letter-spacing: 2px;
+    border-radius: 50px;
+    border: 0;
+    background-color: white;
+    box-shadow: rgb(0 0 0 / 45%) 0 0 8px;
+   margin-bottom: 20px;
+    text-transform: uppercase;
+    font-size: 15px;
+    transition: all .5s ease;
+   }
+   
+   .save-btn:hover {
+    letter-spacing: 4px;
+    background-color: hsl(261deg 80% 48%);
+    color: hsl(0, 0%, 100%);
+    box-shadow: rgb(93 24 220) 0px 7px 29px 0px;
+   }
+   
+   .save-btn:active {
+    letter-spacing: 4px;
+    background-color: hsl(261deg 80% 48%);
+    color: hsl(0, 0%, 100%);
+    box-shadow: rgb(93 24 220) 0px 0px 0px 0px;
+    transform: translateY(10px);
+    transition: 100ms;
+   }
+
+
+   .delete-btn {
+    border: none;
+    display: block;
+    position: relative;
+    padding: 0.7em 2.4em;
+    font-size: 18px;
+    background: transparent;
+    font-weight: bold;
+    cursor: pointer;
+    user-select: none;
+    overflow: hidden;
+    color: red;
+    z-index: 1;
+    letter-spacing: 3px;
+    font-family: 'Ubuntu', sans-serif ;
+
+  }
+  
+  .delete-btn .delete-span {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    z-index: -1;
+    border: 4px solid #fc3917;
+  }
+  
+  .delete-btn .delete-span::before {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 8%;
+    height: 500%;
+    background: var(--lightgray);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-60deg);
+    transition: all 0.3s;
+  }
+  
+  .delete-btn:hover .delete-span::before {
+    transform: translate(-50%, -50%) rotate(-90deg);
+    width: 100%;
+    background: #fc3917;
+  }
+  
+  .delete-btn:hover {
+    color: white;
+  }
+  
+  .delete-btn:active .delete-span::before {
+    background: #2751cd;
+  } 

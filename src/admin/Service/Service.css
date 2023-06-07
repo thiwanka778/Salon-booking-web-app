@@ -1,0 +1,202 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+    text-decoration: none;
+    scroll-behavior: smooth;
+  }
+
+  .service{
+    padding-top:60px;
+  }
+  input[type="file"] {
+    display: none;
+}
+
+
+
+
+.image-upload-service {
+    font-size: 17px;
+    padding: 15px 35px;
+    border-radius: 5px;
+    outline: 2px solid #2835ba;
+    outline-offset: 0px;
+    background: #2835ba;
+    border: 0;
+    font-weight: bolder;
+    color: white;
+    transition: all .1s ease-in-out;
+    cursor: pointer;
+    font-family: 'Ubuntu', sans-serif ;
+    letter-spacing: 2px;
+  }
+  
+  .image-upload-service:hover {
+    outline-offset: 3px;
+    outline: 3px solid #2835ba;
+  }
+
+
+  .button-upload-service {
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+    border: none;
+    background: none;
+    color: #0f1923;
+    cursor: pointer;
+    position: relative;
+    padding: 8px;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 14px;
+    transition: all .15s ease;
+  }
+  
+  .button-upload-service::before,
+  .button-upload-service::after {
+    content: '';
+    display: block;
+    position: absolute;
+    right: 0;
+    left: 0;
+    height: calc(50% - 5px);
+    border: 1px solid #7D8082;
+    transition: all .15s ease;
+  }
+  
+  .button-upload-service::before {
+    top: 0;
+    border-bottom-width: 0;
+  }
+  
+  .button-upload-service::after {
+    bottom: 0;
+    border-top-width: 0;
+  }
+  
+  .button-upload-service:active,
+  .button-upload-service:focus {
+    outline: none;
+  }
+  
+  .button-upload-service:active::before,
+  .button-upload-service:active::after {
+    right: 3px;
+    left: 3px;
+  }
+  
+  .button-upload-service:active::before {
+    top: 3px;
+  }
+  
+  .button-upload-service:active::after {
+    bottom: 3px;
+  }
+  
+  .button_lg {
+    position: relative;
+    display: block;
+    padding: 10px 20px;
+    color: #fff;
+    background-color: #0f1923;
+    overflow: hidden;
+    box-shadow: inset 0px 0px 0px 1px transparent;
+  }
+  
+  .button_lg::before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 2px;
+    height: 2px;
+    background-color: #0f1923;
+  }
+  
+  .button_lg::after {
+    content: '';
+    display: block;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 4px;
+    height: 4px;
+    background-color: #0f1923;
+    transition: all .2s ease;
+  }
+  
+  .button_sl {
+    display: block;
+    position: absolute;
+    top: 0;
+    bottom: -1px;
+    left: -8px;
+    width: 0;
+    background-color: orange;
+    transform: skew(-15deg);
+    transition: all .2s ease;
+  }
+  
+  .button_text {
+    position: relative;
+    font-family: 'Ubuntu', sans-serif ;
+    letter-spacing: 2px;
+  }
+  
+  .button-upload-service:hover {
+    color: #0f1923;
+  }
+  
+  .button-upload-service:hover .button_sl {
+    width: calc(100% + 15px);
+  }
+  
+  .button-upload-service:hover .button_lg::after {
+    background-color: #fff;
+  }
+
+
+
+
+  .save-service {
+    padding: 0.1em 0.25em;
+    width: 13em;
+    height: 4.2em;
+    background-color: #0ec739;
+    border: 0.08em solid #fff;
+    border-radius: 0.3em;
+    font-size: 12px;
+  }
+  
+  .save-service .save-service-span {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    bottom: 0.4em;
+    width: 8.25em;
+    height: 2.5em;
+    background-color: #0ec739;
+    border-radius: 0.2em;
+    font-size: 1.5em;
+    color: #fff;
+    border: 0.08em solid #fff;
+    box-shadow: 0 0.4em 0.1em 0.019em #fff;
+  }
+  
+  .save-service .save-service-span:hover {
+    transition: all 0.5s;
+    transform: translate(0, 0.4em);
+    box-shadow: 0 0 0 0 #fff;
+  }
+  
+  .save-service .save-service-span:not(hover) {
+    transition: all 1s;
+  }
+  
+  
+  
