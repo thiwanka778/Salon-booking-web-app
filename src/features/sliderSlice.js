@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
+import { BASE_URL } from "../apiService";
 
 const initialState = {
   sliderLoading: false,
@@ -16,7 +17,7 @@ export const createSlider = createAsyncThunk(
   'admin/createSlider',
   async ({ url, token }, thunkAPI) => {
     try {
-      const response = await axios.post('http://localhost:8000/api/sliders', { url }, {
+      const response = await axios.post(`${BASE_URL}/api/sliders`, { url }, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -38,7 +39,7 @@ export const getSlider = createAsyncThunk(
   'admin/getSlider',
   async (_, thunkAPI) => {
     try {
-      const response = await axios.get('http://localhost:8000/api/sliders');
+      const response = await axios.get(`${BASE_URL}/api/sliders`);
 
       return response.data;
     } catch (error) {
@@ -58,7 +59,7 @@ export const deleteSlider = createAsyncThunk(
   'admin/deleteSlider',
   async ({ token, id }, thunkAPI) => {
     try {
-      const response = await axios.delete(`http://localhost:8000/api/sliders/${id}`, {
+      const response = await axios.delete(`${BASE_URL}/api/sliders/${id}`, {
         headers: {
           Authorization: `Bearer ${token}` // Pass the token in the Authorization header
         }

@@ -50,22 +50,22 @@ const Service = () => {
     des: "",
     price: "",
     url: "",
-    estimatedTime:"",
+    estimatedTime: "",
   });
 
- 
+
 
   const options = categorydata?.map((item) => {
     const newObject = { value: item?.name }
     return newObject;
   })
-  
+
 
   const handleChangeCategory = (inputValue) => {
     setCategory(inputValue?.toLowerCase());
   };
 
-  const handleChangeCategorySelect=(inputValue)=>{
+  const handleChangeCategorySelect = (inputValue) => {
     setCategorySelect(inputValue?.toLowerCase());
   }
 
@@ -77,7 +77,7 @@ const Service = () => {
     }));
   };
 
-   console.log(service);
+  console.log(service);
 
 
   const uploadImage = () => {
@@ -149,7 +149,7 @@ const Service = () => {
         des: "",
         price: "",
         url: "",
-        estimatedTime:"",
+        estimatedTime: "",
       });
       setImageUpload(null);
       setCategory("");
@@ -172,7 +172,7 @@ const Service = () => {
 
 
 
-  const updateServiceClick = (_id, url, title, des, price, category,estimatedTime) => {
+  const updateServiceClick = (_id, url, title, des, price, category, estimatedTime) => {
     //  console.log(_id, url, title, category, price, des)
     setServiceForm(() => {
       return {
@@ -213,7 +213,7 @@ const Service = () => {
         des: "",
         price: "",
         url: "",
-        estimatedTime:"",
+        estimatedTime: "",
       });
       setImageUpload(null);
       setCategory("");
@@ -234,27 +234,31 @@ const Service = () => {
   }
 
 
-
-  const servicesDisplay = service?.map((item) => {
-    if(categorySelect===""){
-      return (
-        <ServiceCard key={item._id} {...item}
-          updateServiceClick={updateServiceClick}
-          deleteIconClick={deleteIconClick}
-           />
-      )
-    }else if(categorySelect && categorySelect!==""){
-      if(categorySelect===item.category){
+  let servicesDisplay;
+  if (service !== null && service) {
+    servicesDisplay = service?.map((item) => {
+      if (categorySelect === "") {
         return (
           <ServiceCard key={item._id} {...item}
-          updateServiceClick={updateServiceClick}
-          deleteIconClick={deleteIconClick}
-           />
+            updateServiceClick={updateServiceClick}
+            deleteIconClick={deleteIconClick}
+          />
         )
+      } else if (categorySelect && categorySelect !== "") {
+        if (categorySelect === item.category) {
+          return (
+            <ServiceCard key={item._id} {...item}
+              updateServiceClick={updateServiceClick}
+              deleteIconClick={deleteIconClick}
+            />
+          )
+        }
       }
-    }
-   
-  });
+
+    });
+  }
+
+
 
 
   const handleClosed = () => {
@@ -275,16 +279,16 @@ const Service = () => {
       dispatch(getServices());
       setDeleteTitle("");
       setServiceDeleteId('');
-      setServiceForm({url:"",title:"",des:"",price:"",estimatedTime:"",})
+      setServiceForm({ url: "", title: "", des: "", price: "", estimatedTime: "", })
       setCategory("")
-    }else if(serviceErrorMessage==="Not authorized"){
+    } else if (serviceErrorMessage === "Not authorized") {
       dispatch(userLogout())
       dispatch(openModal())
       dispatch(serviceReset())
     }
   }, [serviceLoading])
 
-console.log(serviceForm);
+  console.log(serviceForm);
 
 
 
@@ -320,7 +324,7 @@ console.log(serviceForm);
                   }
                 />
               </div>
-              <div >
+              <div  >
                 <p style={{
                   marginBottom: "3px",
                   fontSize: "1.2rem", fontFamily: "'Poppins', sans-serif", fontWeight: "bold", letterSpacing: "2px"
@@ -388,7 +392,7 @@ console.log(serviceForm);
                     width: screen < 430 ? "90vw" : 300,
                     marginBottom: "10px"
                   }}
-                  
+
                   placeholder="Estimated Time" />
               </div>
 
@@ -449,7 +453,7 @@ console.log(serviceForm);
 
 
 
-          <section style={{ width: screen < 805 ? "100%" : "60%", }}>
+          <section  style={{ width: screen < 805 ? "100%" : "60%", }}>
             <div style={{
               width: "100%",
               display: "flex",
@@ -469,36 +473,36 @@ console.log(serviceForm);
 
         </div>
 
-      {service?.length>=1 &&  <div style={{display:"flex",alignItems:"center",justifyContent:"center",marginBottom:"30px",width:"100%",}}>
-         <p style={{fontSize:"1.5rem",letterSpacing:"3px",fontWeight:"bold",fontFamily:" 'Ubuntu', sans-serif"  }}>You have added {service?.length} services</p> 
+        {service?.length >= 1 && <div style={{ display: "flex", alignItems: "center", justifyContent: "center", marginBottom: "30px", width: "100%", }}>
+          <p style={{ fontSize: "1.5rem", letterSpacing: "3px", fontWeight: "bold", fontFamily: " 'Ubuntu', sans-serif" }}>You have added {service?.length} services</p>
         </div>}
 
-        <div style={{width:"100%",justifyContent:"center",display:"flex",marginTop:"40px",marginBottom:"20px"}}>
+        <div style={{ width: "100%", justifyContent: "center", display: "flex", marginTop: "40px", marginBottom: "20px" }}>
           <div>
-          <p style={{
-                  marginBottom: "3px", fontFamily: "'Poppins', sans-serif",
-                  fontSize: "1.2rem",
-                  fontWeight: "bold", letterSpacing: "2px"
-                }}>Choose the category</p>
+            <p style={{
+              marginBottom: "3px", fontFamily: "'Poppins', sans-serif",
+              fontSize: "1.2rem",
+              fontWeight: "bold", letterSpacing: "2px"
+            }}>Choose the category</p>
 
-                <AutoComplete
-                  style={{
-                    width: screen < 430 ? "90vw" : 300,
-                    marginBottom: "10px"
-                  }}
-                  options={options}
-                  value={categorySelect}
-                  onChange={handleChangeCategorySelect}
-                  placeholder="Choose the category"
-                  filterOption={(inputValue, option) =>
-                    option.value.toUpperCase().indexOf(inputValue.toUpperCase()) !== -1
-                  }
-                />
+            <AutoComplete
+              style={{
+                width: screen < 430 ? "90vw" : 300,
+                marginBottom: "10px"
+              }}
+              options={options}
+              value={categorySelect}
+              onChange={handleChangeCategorySelect}
+              placeholder="Choose the category"
+              filterOption={(inputValue, option) =>
+                option.value.toUpperCase().indexOf(inputValue.toUpperCase()) !== -1
+              }
+            />
           </div>
-       
+
         </div>
 
-        <div style={{display:"flex",flexDirection:"column",alignItems:"center",}}>
+        <div style={{ display: "flex", flexDirection: "column", alignItems: "center", }}>
           {servicesDisplay}
         </div>
 
@@ -627,7 +631,7 @@ console.log(serviceForm);
           <Button onClick={deleteServiceButtonClick}
             variant="contained"
             color="error"
-           
+
           >
 
             <div style={{ display: "flex", alignItems: "center" }}>

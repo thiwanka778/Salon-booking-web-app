@@ -1,5 +1,6 @@
 import { createSlice,createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
+import { BASE_URL } from "../apiService";
 
 
 const localUser=window.localStorage.getItem("user")
@@ -26,7 +27,7 @@ export const userRegister = createAsyncThunk(
   async ({ email, firstName, lastName, phoneNumber, userType, password }, thunkAPI) => {
     
     try {
-      const response = await axios.post("http://localhost:8000/api/user", {
+      const response = await axios.post(`${BASE_URL}/api/user`, {
         email,
         firstName,
         lastName,
@@ -50,7 +51,7 @@ export const userLogin = createAsyncThunk(
   "user/Login",
   async ({ email,  password }, thunkAPI) => {
     try {
-      const response = await axios.post("http://localhost:8000/api/user/login", {
+      const response = await axios.post(`${BASE_URL}/api/user/login`, {
         email,
         password,
       });
@@ -70,7 +71,7 @@ export const userEmailCheck = createAsyncThunk(
   'user/emailCheck',
   async ({email}, thunkAPI) => {
     try {
-      const response = await axios.post('http://localhost:8000/api/user/check/email', {email});
+      const response = await axios.post(`${BASE_URL}/api/user/check/email`, {email});
 
       return response.data;
     } catch (error) {
@@ -90,7 +91,7 @@ export const updateUserPassword = createAsyncThunk(
   'user/updatePassword',
   async ({ email, password }, thunkAPI) => {
     try {
-      const response = await axios.put('http://localhost:8000/api/user/update/password', {
+      const response = await axios.put(`${BASE_URL}/api/user/update/password`, {
         email,
         password,
       });
@@ -110,7 +111,7 @@ export const getUser = createAsyncThunk(
   async ({ token }, thunkAPI) => {
   // console.log(thunkAPI.getState()?.user?.user?.token)
     try {
-      const response = await axios.get('http://localhost:8000/api/user/', {
+      const response = await axios.get(`${BASE_URL}/api/user`, {
         headers: {
           Authorization: `Bearer ${token}`
         }

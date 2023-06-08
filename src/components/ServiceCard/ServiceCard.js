@@ -9,7 +9,7 @@ import AnchorLink from "react-anchor-link-smooth-scroll";
 
 const ServiceCard = ({ category, _id, title,
      price, des, url, updateServiceClick, estimatedTime,
-     deleteIconClick,userDisplay}) => {
+     deleteIconClick,userDisplay,groomingBookingClick}) => {
 
     const dispatch = useDispatch();
    
@@ -78,8 +78,10 @@ const ServiceCard = ({ category, _id, title,
                 }}>{estimatedTime}
                 </p>}
 
-            {  category==="grooming packages" && userDisplay &&   <div style={{marginTop:"10px"}}>
-               <button className="booking-button">Book Now</button>
+            {  category==="grooming packages" && userDisplay &&   <div 
+            onClick={()=>groomingBookingClick(_id,title,price,estimatedTime,url)}
+             style={{marginTop:"10px"}}>
+               <button className="booking-button">Make an appointment</button>
                </div>}
                
 

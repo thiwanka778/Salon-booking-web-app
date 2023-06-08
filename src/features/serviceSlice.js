@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
+import { BASE_URL } from "../apiService";
 
 const initialState = {
   serviceLoading: false,
@@ -24,7 +25,7 @@ export const createService = createAsyncThunk(
     const category = object.category;
     const estimatedTime=object.estimatedTime;
     try {
-      const response = await axios.post('http://localhost:8000/api/service', { url, title, des, price, category,estimatedTime, }, {
+      const response = await axios.post(`${BASE_URL}/api/service`, { url, title, des, price, category,estimatedTime, }, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -47,7 +48,7 @@ export const getServices = createAsyncThunk(
   'admin/getServices',
   async (_, thunkAPI) => {
     try {
-      const response = await axios.get('http://localhost:8000/api/service');
+      const response = await axios.get(`${BASE_URL}/api/service`);
 
       return response.data;
     } catch (error) {
@@ -66,7 +67,7 @@ export const deleteService = createAsyncThunk(
   'admin/deleteService',
   async ({token,id}, thunkAPI) => {
     try {
-      const response = await axios.delete(`http://localhost:8000/api/service/${id}`,{
+      const response = await axios.delete(`${BASE_URL}/api/service/${id}`,{
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -97,7 +98,7 @@ export const updateService = createAsyncThunk(
     const id=object.id;
     const estimatedTime=object.estimatedTime;
     try {
-      const response = await axios.put(`http://localhost:8000/api/service/${id}`, {url,des,title,price,category,estimatedTime},
+      const response = await axios.put(`${BASE_URL}/api/service/${id}`, {url,des,title,price,category,estimatedTime},
         {
           headers: {
             Authorization: `Bearer ${token}`,
