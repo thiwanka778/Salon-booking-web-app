@@ -116,7 +116,7 @@ const CategoryPage = () => {
 
     // console.log(service)
     const serviceDisplay = service?.map((item) => {
-        if (item.category === category.toLowerCase()) {
+        if (item.category.trim().replace(/\s+/g, ' ') === category.toLowerCase().trim().replace(/\s+/g, ' ')) {
             return (
                 <ServiceCard key={item._id} {...item} userDisplay={true}
                     groomingBookingClick={groomingBookingClick} />

@@ -245,7 +245,7 @@ const Service = () => {
           />
         )
       } else if (categorySelect && categorySelect !== "") {
-        if (categorySelect === item.category) {
+        if (categorySelect.trim().replace(/\s+/g, ' ') === item.category.trim().replace(/\s+/g, ' ')) {
           return (
             <ServiceCard key={item._id} {...item}
               updateServiceClick={updateServiceClick}
