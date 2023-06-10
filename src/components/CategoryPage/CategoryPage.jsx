@@ -18,11 +18,6 @@ const { TextArea } = Input;
 
 
 
-
-
-
-
-
 const CategoryPage = () => {
 
     const category = useParams()?.id;
@@ -250,7 +245,7 @@ const CategoryPage = () => {
                             fontFamily: "'Poppins', sans-serif",
                             fontSize: "1rem", marginTop: "10px", marginBottom: "2px",
                         }} >Please kindly specify the desired date and time for the required service
-                            (අවශ්‍ය සේවාව සඳහා  දිනය සහ වේලාව සඳහන් කරන්න)
+                            (සේවාව සඳහා අවශ්‍ය දිනය සහ වේලාව සඳහන් කරන්න)
                         </p>
 
                         <TextArea
@@ -305,7 +300,7 @@ const CategoryPage = () => {
             background: '#363636',
             color: '#fff',
             fontFamily: " 'Ubuntu', sans-serif ",
-            fontSize: "30px",
+            fontSize: "1rem",
             letterSpacing: "2px"
           },
 
@@ -318,7 +313,7 @@ const CategoryPage = () => {
             },
             style: {
               fontFamily: " 'Ubuntu', sans-serif ",
-              fontSize: "22px",
+              fontSize: "1rem",
               letterSpacing: "2px"
             },
           },

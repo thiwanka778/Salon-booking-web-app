@@ -372,7 +372,7 @@ const handleClosers = () => {
                         background: '#363636',
                         color: '#fff',
                         fontFamily: " 'Ubuntu', sans-serif ",
-                        fontSize: "30px",
+                        fontSize: "1rem",
                         letterSpacing: "2px"
                     },
 

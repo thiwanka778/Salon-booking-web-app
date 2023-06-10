@@ -81,7 +81,7 @@ const ServiceCard = ({ category, _id, title,
             {  category==="grooming packages" && userDisplay &&   <div 
             onClick={()=>groomingBookingClick(_id,title,price,estimatedTime,url)}
              style={{marginTop:"10px"}}>
-               <button className="booking-button">Make an appointment</button>
+               <button className="booking-button">Contact Us</button>
                </div>}
                
 

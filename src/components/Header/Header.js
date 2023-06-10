@@ -55,15 +55,15 @@ const Header = () => {
 
 
   // profile 
-  const handleClickProfile = (event) => {
-    setAnchorEl(null);
-    setAnchorProfile(event.currentTarget);
+  // const handleClickProfile = (event) => {
+  //   setAnchorEl(null);
+  //   setAnchorProfile(event.currentTarget);
     
-  };
-  const handleCloseProfile = () => {
-    setAnchorProfile(null);
+  // };
+  // const handleCloseProfile = () => {
+  //   setAnchorProfile(null);
 
-  };
+  // };
 
 
 
@@ -156,7 +156,7 @@ const Header = () => {
           'aria-labelledby': 'basic-button',
         }}
       >
-        <MenuItem onClick={handleClickProfile}><PersonIcon />&nbsp; {userName}</MenuItem>
+        <MenuItem><PersonIcon />&nbsp; {userName}</MenuItem>
         <Divider />
 
         {/* {user !== null && <MenuItem
@@ -225,59 +225,7 @@ const Header = () => {
         <MenuItem onClick={handleClose2}><PhoneIcon />&nbsp; Contact Us</MenuItem>
       </Menu>
 
-
-
-
-
-
-      <Menu
-        id="basic-menu"
-        anchorEl={anchorProfile}
-        open={openProfile}
-        onClose={handleCloseProfile}
-        MenuListProps={{
-          'aria-labelledby': 'basic-button',
-        }}
-      >
-        <div style={{ padding: "10px", width: "320px" }}>
-          <div style={{ background: "yellow", display: "flex", justifyContent: "center", marginBottom: "10px", }}>
-            <img
-              src="https://images.unsplash.com/photo-1503023345310-bd7c1de61c7d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8aHVtYW58ZW58MHx8MHx8fDA%3D&w=1000&q=80"
-              style={{ width: "90%" }} />
-          </div>
-
-          <div style={{ width: "100%", display: "flex", justifyContent: "center", marginBottom: "9px", }}>
-            <p style={{ fontWeight: "bold", letterSpacing: "2px", }}>Email</p>
-          </div>
-
-          <div style={{ marginBottom: "10px", }}>
-            <p style={{ letterSpacing: "2px", fontWeight: "bold", fontSize: "1rem", marginBottom: "7px" }}>First Name</p>
-            <Input style={{ width: "90%", fontWeight: "bold", letterSpacing: "2px", }} placeholder="First Name" />
-          </div>
-
-
-
-          <div style={{ marginBottom: "10px", }}>
-            <p style={{ letterSpacing: "2px", fontWeight: "bold", fontSize: "1rem", marginBottom: "7px" }}>Last Name</p>
-            <Input style={{ width: "90%", fontWeight: "bold", letterSpacing: "2px", }} placeholder="Last Name" />
-          </div>
-
-
-          <div style={{ marginBottom: "10px", }}>
-            <p style={{ letterSpacing: "2px", fontWeight: "bold", fontSize: "1rem", marginBottom: "7px" }}>Phone Number</p>
-            <Input style={{ width: "90%", fontWeight: "bold", letterSpacing: "2px", }} placeholder="Phone Number" />
-          </div>
-
-
-
-
-
-
-
-
-        </div>
-
-      </Menu>
+     
 
 
 

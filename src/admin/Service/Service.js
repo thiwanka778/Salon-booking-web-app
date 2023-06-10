@@ -562,7 +562,7 @@ const Service = () => {
             background: '#363636',
             color: '#fff',
             fontFamily: " 'Ubuntu', sans-serif ",
-            fontSize: "30px",
+            fontSize: "1rem",
             letterSpacing: "2px"
           },
 
@@ -575,7 +575,7 @@ const Service = () => {
             },
             style: {
               fontFamily: " 'Ubuntu', sans-serif ",
-              fontSize: "22px",
+              fontSize: "1rem",
               letterSpacing: "2px"
             },
           },
