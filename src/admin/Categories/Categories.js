@@ -49,7 +49,6 @@ const {screen}=useSelector((state)=>state.user);
 
       <section style={{width:screen<696?"80vw":"70%",}}>
       <div style={{width:"100%"}}>
-
         <div style={{ display: "flex", alignItems: "center", justifyContent: "center", marginBottom: "1px",marginTop:"3px" }}>
       <p style={{
            color: "white",
