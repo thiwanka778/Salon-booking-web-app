@@ -24,16 +24,16 @@ const Home = () => {
   })
 
 
-  const categoryContainerStyles = screen < 685 ?
-    {
-      display: "flex",
-      flexDirection: "column",
-      alignItems: "center",
-    } : {
-      display: "grid",
-      gridTemplateColumns: "repeat(auto-fit,minmax(320px,1fr))",
-      paddingLeft: "20px",
-    }
+  // const categoryContainerStyles = screen < 685 ?
+  //   {
+  //     display: "flex",
+  //     flexDirection: "column",
+  //     alignItems: "center",
+  //   } : {
+  //     display: "grid",
+  //     gridTemplateColumns: "repeat(auto-fit,minmax(320px,1fr))",
+  //     paddingLeft: "20px",
+  //   }
 
   return (
 
@@ -76,8 +76,8 @@ const Home = () => {
       </div>
 
 
-      <div className='category-container' style={categoryContainerStyles}>
-        {categoryDisplay}
+      <div className='category-container'>
+       {categoryDisplay}
       </div>
 
 
