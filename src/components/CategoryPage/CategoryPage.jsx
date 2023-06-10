@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import ServiceCard from '../ServiceCard/ServiceCard';
 import { getServices, serviceReset } from '../../features/serviceSlice';
-import { Modal, Button } from 'antd';
+import { Modal} from 'antd';
 import axios from 'axios';
 import { Input } from 'antd';
 import Backdrop from '@mui/material/Backdrop';
@@ -12,6 +12,11 @@ import CircularProgress from '@mui/material/CircularProgress';
 import toast, { Toaster } from 'react-hot-toast';
 import { Image } from 'antd';
 import { BASE_URL } from '../../apiService';
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogTitle from '@mui/material/DialogTitle';
+import Button from '@mui/material/Button';
 const { TextArea } = Input;
 
 
@@ -122,7 +127,7 @@ const CategoryPage = () => {
     // console.log(form);
 
     const sendEmail = () => {
-        if(form.name!=="" && form.phoneNumber!=="" && form.text!==""){
+        if (form.name !== "" && form.phoneNumber !== "" && form.text !== "") {
             setVisible(false);
             setEmailLoading(true);
             const sendingMessage = `I am ${form.name}. I need this ${data.title} service. This is my phone number : ${form.phoneNumber}.
@@ -133,7 +138,7 @@ const CategoryPage = () => {
                     setEmailLoading(false);
                     toast.success('Message sent successfully !')
                     setVisible(false);
-                    setForm({name:"",phoneNumber:"",text:""})
+                    setForm({ name: "", phoneNumber: "", text: "" })
                     // Optionally, you can show a success message or perform any other actions
                 })
                 .catch((error) => {
@@ -142,11 +147,11 @@ const CategoryPage = () => {
                     setVisible(false);
                     // Optionally, you can show an error message or handle the error
                 });
-        }else{
-            toast.error('Input fields are required !') 
+        } else {
+            toast.error('Input fields are required !')
         }
-       
-       
+
+
     };
 
     return (
@@ -177,10 +182,10 @@ const CategoryPage = () => {
 
 
 
-            <div>
+            {/* <div>
 
                 <Modal
-            
+
                     title={data?.title}
                     open={visible}
                     onOk={handleOk}
@@ -190,6 +195,73 @@ const CategoryPage = () => {
                         <Button onClick={sendEmail} type="primary">Submit</Button>,
                     ]}
                 >
+
+                </Modal>
+            </div> */}
+
+
+
+
+            <Backdrop
+                sx={{ color: 'gold' }}
+                open={emailLoading}
+            >
+                <CircularProgress color="inherit" />
+            </Backdrop>
+
+
+
+            <Toaster
+                position="top-center"
+                reverseOrder={false}
+                gutter={8}
+                containerClassName=""
+                containerStyle={{
+
+                }}
+
+                toastOptions={{
+                    // Define default options
+                    className: "",
+                    duration: 3000,
+                    style: {
+                        background: '#363636',
+                        color: '#fff',
+                        fontFamily: " 'Ubuntu', sans-serif ",
+                        fontSize: "1rem",
+                        letterSpacing: "2px"
+                    },
+
+                    // Default options for specific types
+                    success: {
+                        duration: 3000,
+                        theme: {
+                            primary: 'green',
+                            secondary: 'black',
+                        },
+                        style: {
+                            fontFamily: " 'Ubuntu', sans-serif ",
+                            fontSize: "1rem",
+                            letterSpacing: "2px"
+                        },
+                    },
+
+
+
+                }}
+            />
+
+
+            <Dialog
+                open={visible}
+                onClose={handleCancel}
+                aria-labelledby="alert-dialog-title"
+                aria-describedby="alert-dialog-description"
+            >
+                <DialogTitle id="alert-dialog-title">
+                    {data?.title}
+                </DialogTitle>
+                <DialogContent>
                     <div>
 
                         <img style={{
@@ -197,14 +269,14 @@ const CategoryPage = () => {
                             boxShadow: "rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px"
                         }} src={data?.url} />
                         {/* <Image
-                        width={200}
-                            style={{
-                                borderRadius: "10px", marginBottom: "1rem",
-                                boxShadow: "rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px"
-                            }}
+width={200}
+    style={{
+        borderRadius: "10px", marginBottom: "1rem",
+        boxShadow: "rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px"
+    }}
 
-                            src={data?.url}
-                        /> */}
+    src={data?.url}
+/> */}
 
                         <p style={{
                             fontWeight: "bold", letterSpacing: "2px",
@@ -268,60 +340,14 @@ const CategoryPage = () => {
 
 
                     </div>
-                </Modal>
-            </div>
-
-
-
-
-            <Backdrop
-                sx={{ color: 'gold' }}
-                open={emailLoading}
-            >
-                <CircularProgress color="inherit" />
-            </Backdrop>
-
-
-
-            <Toaster
-        position="top-center"
-        reverseOrder={false}
-        gutter={8}
-        containerClassName=""
-        containerStyle={{
-
-        }}
-
-        toastOptions={{
-          // Define default options
-          className: "",
-          duration: 3000,
-          style: {
-            background: '#363636',
-            color: '#fff',
-            fontFamily: " 'Ubuntu', sans-serif ",
-            fontSize: "1rem",
-            letterSpacing: "2px"
-          },
-
-          // Default options for specific types
-          success: {
-            duration: 3000,
-            theme: {
-              primary: 'green',
-              secondary: 'black',
-            },
-            style: {
-              fontFamily: " 'Ubuntu', sans-serif ",
-              fontSize: "1rem",
-              letterSpacing: "2px"
-            },
-          },
-
-
-
-        }}
-      />
+                </DialogContent>
+                <DialogActions>
+                    <Button onClick={handleCancel} variant="contained" color="error">Cancel</Button>
+                    <Button onClick={sendEmail} variant="contained" autoFocus>
+                        submit
+                    </Button>
+                </DialogActions>
+            </Dialog>
 
         </>
     )

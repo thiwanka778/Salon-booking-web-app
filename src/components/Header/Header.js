@@ -127,7 +127,7 @@ const Header = () => {
         </div>}
 
         <div style={{ marginRight: "20px", cursor: "pointer" }}   >
-          <Avatar alt={userName} src="/static/images/avatar/2.jpg"
+          <Avatar alt={userName} 
           style={{background:"orange"}}
             id="basic-button"
             aria-controls={open ? 'basic-menu' : undefined}
