@@ -601,13 +601,21 @@ const Service = () => {
               fontWeight: "bold", letterSpacing: "2px", marginBottom: "6px",
               fontFamily: " 'Ubuntu', sans-serif", color: "black",
             }}>Delete service ?</p>
+             <p style={{
+              fontSize: "1.2rem",
+              fontWeight: "bold",
+              letterSpacing: "2px", marginBottom: "2px",
+              fontFamily: "'Poppins', sans-serif",
+              color: "#6f7075",
+            }}>Are you sure</p>
+
             <p style={{
               fontSize: "1.2rem",
               fontWeight: "bold",
               letterSpacing: "2px", marginBottom: "2px",
               fontFamily: "'Poppins', sans-serif",
               color: "#6f7075",
-            }}>Are you sure you want to delete "<span style={{ fontWeight: "bold", fontSize: "1.3rem", color: "black", }}>{deleteTitle}</span>" ?</p>
+            }}>You want to delete "<span style={{ fontWeight: "bold", fontSize: "1.3rem", color: "black", }}>{deleteTitle}</span>"?</p>
             <p style={{
               fontSize: "1.2rem",
               letterSpacing: "2px",

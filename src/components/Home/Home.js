@@ -58,12 +58,15 @@ const Home = () => {
 
       <div style={{
         marginBottom: "30px",
+       
       }}>
         <Sliderr />
       </div>
 
       <div style={{ display: "flex", alignItems: "center", justifyContent: "center", marginBottom: "30px",flexDirection:screen<451?"column":"row" }}>
-        <p style={{ fontFamily: "'Poppins', sans-serif", fontWeight: "bold", fontSize: "20px", letterSpacing: "3px",marginBottom:screen<451?"10px":"0px" }}>
+        <p style={{ fontFamily: "'Poppins', sans-serif", 
+        fontWeight: "bold", fontSize: "20px", letterSpacing: "3px", 
+        marginBottom:screen<451?"10px":"0px" }}>
           Choose What You Want</p>
 
          {user?.userType==="admin" &&  <button style={{marginLeft:screen<451?"0px":"20px"}} className="type1">
