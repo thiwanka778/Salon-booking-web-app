@@ -40,7 +40,8 @@ const {screen}=useSelector((state)=>state.user);
 
     <div className="categories" onClick={()=>navigate(`/category/${name.toLowerCase()}`)}
      style={{  width:screen<696?"80vw":"90%",display:"flex",
-     borderRadius:"10px",margin:"20px",flexDirection:screen<696?"column":"row",cursor:"pointer", }}>
+     borderRadius:"10px",margin:"20px",flexDirection:screen<696?"column":"row",
+     cursor:"pointer", }}>
 
       <section style={{width:screen<696?"80vw":"320px",padding:screen<696?"2vw":"10px",alignItems:"center",justifyContent:"center",display:"flex",}}>
       <img style={{width:screen<696?"76vw":"300px",borderRadius:"10px",}}

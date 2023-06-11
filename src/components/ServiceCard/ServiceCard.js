@@ -79,7 +79,7 @@ const ServiceCard = ({ category, _id, title,
                 }}>{estimatedTime}
                 </p>}
 
-                {category === "grooming packages" && userDisplay && <div
+                {category.trim().replace(/\s+/g, ' ') === "grooming packages" && userDisplay && <div
                     onClick={() => groomingBookingClick(_id, title, price, estimatedTime, url)}
                     style={{ marginTop: "10px" }}>
                     <button className="booking-button">Contact Us</button>

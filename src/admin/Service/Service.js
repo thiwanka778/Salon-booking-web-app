@@ -189,7 +189,7 @@ const Service = () => {
 
   const updateServiceButtonClick = () => {
     if (serviceId !== "" && serviceForm.url !== "" && serviceForm.title !== "" && serviceForm.price !== "" && category !== "") {
-      dispatch(updateService({ ...serviceForm, "category": category, "token": user?.token, id: serviceId }))
+      dispatch(updateService({ ...serviceForm, "category": category.trim().replace(/\s+/g, ' '), "token": user?.token, id: serviceId }))
     } else {
       toast.custom(<div style={{
         background: 'orange',
