@@ -12,6 +12,8 @@ const initialState = {
     categoryArray: [],
 
     categorySaveSuccess:false,
+    categoryUpdateSuccess:false,
+    categoryDeleteSuccess:false,
   
   }
 
@@ -64,6 +66,64 @@ export const getCategory = createAsyncThunk(
     }
   );
 
+  // update category
+  export const updateCategory = createAsyncThunk(
+    'admin/updateCategory',
+    async (object, thunkAPI) => {
+    //   console.log(object)
+    const id=object._id;
+      const token = object.token;
+      const categoryUrl = object.categoryUrl;
+      const categoryDes = object.categoryDes;
+      const categoryTitle = object.categoryTitle.toLowerCase().trim();
+     
+      try {
+        const response = await axios.put(`${BASE_URL}/api/category/${id}`, { categoryUrl, categoryTitle, categoryDes, }, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+  
+        return response.data;
+      } catch (error) {
+        const message =
+          (error.response && error.response.data && error.response.data.message) ||
+          error.message ||
+          error.toString();
+  
+        return thunkAPI.rejectWithValue(message);
+      }
+    }
+  );
+
+  // delete category
+
+  export const deleteCategory = createAsyncThunk(
+    'admin/deleteCategory',
+    async (object, thunkAPI) => {
+    //   console.log(object)
+    const id=object._id;
+     const token=object.token;
+     
+      try {
+        const response = await axios.delete(`${BASE_URL}/api/category/${id}`,  {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+  
+        return response.data;
+      } catch (error) {
+        const message =
+          (error.response && error.response.data && error.response.data.message) ||
+          error.message ||
+          error.toString();
+  
+        return thunkAPI.rejectWithValue(message);
+      }
+    }
+  );
+
   const categorySlice = createSlice({
     name: "category",
     initialState,
@@ -73,6 +133,8 @@ export const getCategory = createAsyncThunk(
         state.categorySuccess = false;
         state.categoryErrorMessage = "";
         state.categorySaveSuccess=false;
+        state.categoryUpdateSuccess=false;
+        state.categoryDeleteSuccess=false;
   
       },
   
@@ -117,6 +179,46 @@ export const getCategory = createAsyncThunk(
              state.categoryLoading=false;
              state.categoryErrorMessage=action.payload;
              state.categorySaveSuccess=false;
+     
+           })
+           // update category
+
+           .addCase(updateCategory.pending, (state) => {
+            state.categoryLoading=true;
+            state.categoryErrorMessage="";
+            state.categoryUpdateSuccess=false;
+           })
+           .addCase(updateCategory.fulfilled, (state, action) => {
+             state.categoryLoading=false;
+             state.categoryErrorMessage="";
+             state.categoryUpdateSuccess=true;
+           })
+           .addCase(updateCategory.rejected, (state, action) => {
+             state.categoryLoading=false;
+             state.categoryErrorMessage=action.payload;
+             state.categoryUpdateSuccess=false;
+     
+           })
+
+           // delete category
+
+           .addCase(deleteCategory.pending, (state) => {
+            state.categoryLoading=true;
+            state.categoryErrorMessage="";
+            state.categoryDeleteSuccess=false;
+         
+           })
+           .addCase(deleteCategory.fulfilled, (state, action) => {
+             state.categoryLoading=false;
+             state.categoryErrorMessage="";
+             state.categoryDeleteSuccess=true;
+             
+           })
+           .addCase(deleteCategory.rejected, (state, action) => {
+             state.categoryLoading=false;
+             state.categoryErrorMessage=action.payload;
+             state.categoryDeleteSuccess=false;
+             
      
            })
 

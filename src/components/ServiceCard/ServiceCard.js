@@ -8,7 +8,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import AnchorLink from "react-anchor-link-smooth-scroll";
 import { getCategory } from '../../features/categorySlice';
 
-const ServiceCard = ({ categoryId, _id, title,
+const ServiceCard = ({ categoryId, _id, title,categoryName,
     price, des, url, updateServiceClick, estimatedTime,
     deleteIconClick, userDisplay, groomingBookingClick }) => {
 const {categoryArray}=useSelector((state)=>state.category);
@@ -88,11 +88,11 @@ console.log(categoryObject,"SErvice card")
                 }}>{estimatedTime}
                 </p>}
 
-                {/* {category.trim().replace(/\s+/g, ' ') === "grooming packages" && userDisplay && <div
+                {categoryName!=="" && categoryName==="grooming packages" && <div
                     onClick={() => groomingBookingClick(_id, title, price, estimatedTime, url)}
                     style={{ marginTop: "10px" }}>
                     <button className="booking-button">Contact Us</button>
-                </div>} */}
+                </div>}
 
 
 

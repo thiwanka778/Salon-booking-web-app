@@ -5,15 +5,22 @@ import { Input } from "antd";
 import { storage } from "../../firebaseConfig";
 import { useDispatch, useSelector } from "react-redux";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
-import { openModal,userLogout } from "../../features/userSlice";
+import { openModal, userLogout } from "../../features/userSlice";
 import Categories from "../Categories/Categories";
-import toast, { Toaster } from 'react-hot-toast';
+import toast, { Toaster } from "react-hot-toast";
 import Backdrop from "@mui/material/Backdrop";
 import CircularProgress from "@mui/material/CircularProgress";
+import Dialog from "@mui/material/Dialog";
+import DialogActions from "@mui/material/DialogActions";
+import DialogContent from "@mui/material/DialogContent";
+import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
+import Button from "@mui/material/Button";
 import {
   createCategory,
   getCategory,
   categoryReset,
+  updateCategory,
+  deleteCategory,
 } from "../../features/categorySlice";
 import { v4 } from "uuid";
 
@@ -22,7 +29,13 @@ const { TextArea } = Input;
 const EditCategory = () => {
   const dispatch = useDispatch();
   const { screen, user } = useSelector((state) => state.user);
+  const [opend, setOpend] = React.useState(false);
   const [imageUpload, setImageUpload] = React.useState(null);
+  const [deleteCategoryData, setDeleteCategoryData] = React.useState({
+    _id: "",
+    categoryTitle: "",
+  });
+  const [updateCategoryId, setUpdateCategoryId] = React.useState("");
   const {
     categoryLoading,
     categoryError,
@@ -30,6 +43,8 @@ const EditCategory = () => {
     categoryErrorMessage,
     categoryArray,
     categorySaveSuccess,
+    categoryUpdateSuccess,
+    categoryDeleteSuccess,
   } = useSelector((state) => state.category);
 
   const [uploadLoading, setUploadLoading] = React.useState(false);
@@ -105,30 +120,124 @@ const EditCategory = () => {
         })
       );
     } else {
-      toast.error('All fields are required !')
+      toast.error("All fields are required !");
     }
   };
 
-  React.useEffect(()=>{
-if(categoryLoading===false){
-  if(categorySaveSuccess===true){
-    dispatch(getCategory());
-    dispatch(categoryReset());
-    setCategoryData({categoryTitle:"",categoryDes:"",categoryUrl:""});
-    setImageUpload(null)
-    toast.success('Added Successfully !')
-  }else if(categoryErrorMessage==="Not authorized"){
-       dispatch(userLogout());
-       dispatch(openModal())
-  }
-}
-  },[categoryLoading]);
+  React.useEffect(() => {
+    if (categoryLoading === false) {
+      if (categorySaveSuccess === true) {
+        dispatch(getCategory());
+        dispatch(categoryReset());
+        setCategoryData({
+          categoryTitle: "",
+          categoryDes: "",
+          categoryUrl: "",
+        });
+        setImageUpload(null);
+        toast.success("Added Successfully !");
+      } else if (categoryErrorMessage === "Not authorized") {
+        dispatch(userLogout());
+        dispatch(openModal());
+      }
+    }
+  }, [categoryLoading]);
 
-const categoryDisplay=categoryArray?.map((item)=>{
-        return(
-          <Categories key={item._id} {...item} usersHomePage={false} />
-        )
-})
+  const editCategoryIconClick = (
+    id,
+    categoryTitle,
+    categoryDes,
+    categoryUrl
+  ) => {
+    setUpdateCategoryId(id);
+    setCategoryData({
+      categoryTitle: categoryTitle.toLowerCase().trim(),
+      categoryDes: categoryDes,
+      categoryUrl: categoryUrl,
+    });
+  };
+
+  const updateCategoryClick = () => {
+    if (
+      categoryData.categoryTitle !== "" &&
+      categoryData.categoryDes !== "" &&
+      categoryData.categoryUrl !== "" &&
+      updateCategoryId !== ""
+    ) {
+      dispatch(
+        updateCategory({
+          token: user?.token,
+          _id: updateCategoryId,
+          categoryTitle: categoryData.categoryTitle.toLowerCase().trim(),
+          categoryDes: categoryData.categoryDes,
+          categoryUrl: categoryData.categoryUrl,
+        })
+      );
+    } else {
+      toast.error("All fields are required !");
+    }
+  };
+
+  React.useEffect(() => {
+    if (categoryLoading === false) {
+      if (categoryUpdateSuccess === true) {
+        toast.success("Updated Successfully !");
+        dispatch(categoryReset());
+        dispatch(getCategory());
+        setCategoryData({
+          categoryTitle: "",
+          categoryDes: "",
+          categoryUrl: "",
+        });
+        setUpdateCategoryId("");
+      }
+    } else if (categoryErrorMessage === "Not authorized") {
+      dispatch(openModal());
+      dispatch(userLogout());
+    }
+  }, [categoryLoading]);
+
+  const deleteCategoryIconClick = (id, categoryTitle) => {
+    setDeleteCategoryData({ _id: id, categoryTitle: categoryTitle });
+    console.log(id, categoryTitle);
+    setOpend(true);
+  };
+  const handleClosed = () => {
+    setOpend(false);
+  };
+
+  const deleteCategoryButtonClick = () => {
+    const token = user?.token;
+    const _id = deleteCategoryData._id;
+    setOpend(false);
+    dispatch(deleteCategory({ token, _id }));
+  };
+
+  React.useEffect(() => {
+    if (categoryLoading === false) {
+      if (categoryDeleteSuccess === true) {
+        dispatch(categoryReset());
+        dispatch(getCategory());
+        toast.success("Deleted Successfully !")
+      }
+    }else if(categoryErrorMessage==="Not authorized"){
+      dispatch(userLogout());
+      dispatch(openModal());
+
+    }
+  }, [categoryLoading]);
+
+  const categoryDisplay = categoryArray?.map((item) => {
+    return (
+      <Categories
+        key={item._id}
+        {...item}
+        usersHomePage={false}
+        editCategoryIconClick={editCategoryIconClick}
+        deleteCategoryIconClick={deleteCategoryIconClick}
+      />
+    );
+  });
 
   return (
     <>
@@ -239,26 +348,51 @@ const categoryDisplay=categoryArray?.map((item)=>{
               </button>
             )}
 
-            <button
-              onClick={onSaveClick}
-              className="save-service"
-              style={{
-                marginTop: "5px",
-                marginBottom: "20px",
-                cursor: "pointer",
-              }}
-            >
-              <span
-                className="save-service-span"
+            {updateCategoryId === "" && (
+              <button
+                onClick={onSaveClick}
+                className="save-service"
                 style={{
-                  fontFamily: " 'Ubuntu', sans-serif ",
-                  letterSpacing: "2px",
-                  fontWeight: "bold",
+                  marginTop: "5px",
+                  marginBottom: "20px",
+                  cursor: "pointer",
                 }}
               >
-                SAVE
-              </span>
-            </button>
+                <span
+                  className="save-service-span"
+                  style={{
+                    fontFamily: " 'Ubuntu', sans-serif ",
+                    letterSpacing: "2px",
+                    fontWeight: "bold",
+                  }}
+                >
+                  SAVE
+                </span>
+              </button>
+            )}
+
+            {updateCategoryId !== "" && (
+              <button
+                onClick={updateCategoryClick}
+                className="save-service"
+                style={{
+                  marginTop: "30px",
+                  marginBottom: "20px",
+                  cursor: "pointer",
+                }}
+              >
+                <span
+                  className="save-service-span"
+                  style={{
+                    fontFamily: " 'Ubuntu', sans-serif ",
+                    letterSpacing: "2px",
+                    fontWeight: "bold",
+                  }}
+                >
+                  UPDATE
+                </span>
+              </button>
+            )}
           </section>
 
           <section
@@ -285,61 +419,167 @@ const categoryDisplay=categoryArray?.map((item)=>{
           </section>
         </div>
 
-        <div style={{display:"flex",flexDirection:"column",width:"100%",alignItems:"center"}}>
-        {categoryDisplay}
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            width: "100%",
+            alignItems: "center",
+          }}
+        >
+          {categoryDisplay}
         </div>
       </div>
 
-
-
-
       <Toaster
-                position="top-center"
-                reverseOrder={false}
-                gutter={8}
-                containerClassName=""
-                containerStyle={{
+        position="top-center"
+        reverseOrder={false}
+        gutter={8}
+        containerClassName=""
+        containerStyle={{}}
+        toastOptions={{
+          // Define default options
+          className: "",
+          duration: 3000,
+          style: {
+            background: "#363636",
+            color: "#fff",
+            fontFamily: " 'Ubuntu', sans-serif ",
+            fontSize: "1rem",
+            letterSpacing: "2px",
+          },
 
-                }}
-
-                toastOptions={{
-                    // Define default options
-                    className: "",
-                    duration: 3000,
-                    style: {
-                        background: '#363636',
-                        color: '#fff',
-                        fontFamily: " 'Ubuntu', sans-serif ",
-                        fontSize: "1rem",
-                        letterSpacing: "2px"
-                    },
-
-                    // Default options for specific types
-                    success: {
-                        duration: 3000,
-                        theme: {
-                            primary: 'green',
-                            secondary: 'black',
-                        },
-                        style: {
-                            fontFamily: " 'Ubuntu', sans-serif ",
-                            fontSize: "1rem",
-                            letterSpacing: "2px"
-                        },
-                    },
-
-
-
-                }}
-            />
-   <Backdrop sx={{ color: 'gold' }} open={categoryLoading}>
+          // Default options for specific types
+          success: {
+            duration: 3000,
+            theme: {
+              primary: "green",
+              secondary: "black",
+            },
+            style: {
+              fontFamily: " 'Ubuntu', sans-serif ",
+              fontSize: "1rem",
+              letterSpacing: "2px",
+            },
+          },
+        }}
+      />
+      <Backdrop sx={{ color: "gold" }} open={categoryLoading}>
         <CircularProgress color="inherit" />
       </Backdrop>
-
 
       <Backdrop sx={{ color: "#fff" }} open={uploadLoading}>
         <CircularProgress color="inherit" />
       </Backdrop>
+
+      <Dialog
+        open={opend}
+        onClose={handleClosed}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+      >
+        <DialogContent>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+            }}
+          >
+            <p
+              style={{
+                fontSize: "2rem",
+                fontWeight: "bold",
+                letterSpacing: "2px",
+                marginBottom: "6px",
+                fontFamily: " 'Ubuntu', sans-serif",
+                color: "black",
+              }}
+            >
+              Delete category ?
+            </p>
+            <p
+              style={{
+                fontSize: "1.2rem",
+                fontWeight: "bold",
+                letterSpacing: "2px",
+                marginBottom: "2px",
+                fontFamily: "'Poppins', sans-serif",
+                color: "#6f7075",
+              }}
+            >
+              Are you sure
+            </p>
+
+            <p
+              style={{
+                fontSize: "1.2rem",
+                fontWeight: "bold",
+                letterSpacing: "2px",
+                marginBottom: "2px",
+                fontFamily: "'Poppins', sans-serif",
+                color: "#6f7075",
+              }}
+            >
+              You want to delete "
+             {deleteCategoryData && deleteCategoryData?.categoryTitle!=="" && <span
+                style={{
+                  fontWeight: "bold",
+                  fontSize: "1.3rem",
+                  color: "black",
+                }}
+              >
+                {deleteCategoryData?.categoryTitle[0].toUpperCase()+deleteCategoryData?.categoryTitle.slice(1)}
+              </span>}
+              "?
+            </p>
+            <p
+              style={{
+                fontSize: "1.2rem",
+                letterSpacing: "2px",
+                fontWeight: "bold",
+                fontFamily: "'Poppins', sans-serif",
+                color: "#6f7075",
+              }}
+            >
+              You can't undo this action
+            </p>
+          </div>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleClosed} variant="contained">
+            <p
+              style={{
+                fontSize: "1rem",
+                letterSpacing: "2px",
+                fontFamily: " 'Ubuntu', sans-serif",
+              }}
+            >
+              Cancel
+            </p>
+          </Button>
+
+          <Button
+            onClick={deleteCategoryButtonClick}
+            variant="contained"
+            color="error"
+          >
+            <div style={{ display: "flex", alignItems: "center" }}>
+              <DeleteForeverIcon />
+              <p
+                style={{
+                  marginLeft: "3px",
+                  fontSize: "1rem",
+                  letterSpacing: "2px",
+                  fontFamily: " 'Ubuntu', sans-serif",
+                }}
+              >
+                Delete
+              </p>
+            </div>
+          </Button>
+        </DialogActions>
+      </Dialog>
     </>
   );
 };

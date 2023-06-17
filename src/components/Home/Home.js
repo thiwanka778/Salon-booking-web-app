@@ -5,10 +5,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import Categories from "../../admin/Categories/Categories";
 import { getSlider, sliderReset } from "../../features/sliderSlice";
+import {getCategory} from "../../features/categorySlice";
 
 const Home = () => {
   // console.log("catego", categorydata);
   const navigate = useNavigate();
+  const {categoryArray}=useSelector((state)=>state.category);
   const { slider, sliderLoading, sliderSuccess } = useSelector(
     (state) => state.slider
   );
@@ -18,6 +20,11 @@ const Home = () => {
 
   React.useEffect(() => {
     dispatch(getSlider());
+    
+  }, []);
+  React.useEffect(() => {
+ 
+    dispatch(getCategory())
   }, []);
 
   React.useEffect(() => {
@@ -26,9 +33,11 @@ const Home = () => {
     }
   }, [sliderLoading]);
 
-  // const categoryDisplay = categoryData?.map((item) => {
-  //   return <Categories key={item.id} {...item} usersHomePage={true} />;
-  // });
+  const categoryDisplay = categoryArray?.map((item) => {
+    return <Categories key={item._id} {...item} usersHomePage={true} />;
+  });
+
+  console.log(categoryDisplay)
 
   return (
     <div className="home">
@@ -104,7 +113,7 @@ const Home = () => {
 
       
 
-      {/* <div className="category-container">{categoryDisplay}</div> */}
+      <div className="category-container">{categoryDisplay}</div>
     </div>
   );
 };

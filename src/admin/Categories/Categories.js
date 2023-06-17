@@ -8,18 +8,20 @@ import EditIcon from "@mui/icons-material/Edit";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 
 const Categories = ({
-  id,
+  _id,
   categoryTitle,
   categoryUrl,
   categoryDes,
   usersHomePage,
+  editCategoryIconClick,
+  deleteCategoryIconClick,
 }) => {
   const { screen } = useSelector((state) => state.user);
   const navigate = useNavigate();
 
   const categoryNavigate = () => {
     if (usersHomePage === true) {
-      navigate(`/category/${categoryTitle.toLowerCase()}`);
+      navigate(`/category/${_id}`);
     }
   };
 
@@ -102,13 +104,13 @@ const Categories = ({
                 marginBottom:"10px",
               }}
             >
-              <Tooltip title="Update">
+              <Tooltip title="Update" onClick={()=>editCategoryIconClick(_id,categoryTitle,categoryDes,categoryUrl)}>
                 <IconButton>
                   <EditIcon style={{ color: "white", fontSize: "25px" }} />
                 </IconButton>
               </Tooltip>
 
-              <Tooltip title="Delete">
+              <Tooltip title="Delete" onClick={()=>deleteCategoryIconClick(_id,categoryTitle)}>
                 <IconButton>
                   <DeleteForeverIcon
                     style={{ color: "white", fontSize: "25px" }}
