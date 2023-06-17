@@ -2,7 +2,6 @@ import React from "react";
 import "./Service.css";
 import { useDispatch, useSelector } from "react-redux";
 import { AutoComplete, Input } from "antd";
-import categorydata from "../Categories/categorydata";
 import emptyImage from "../../assets/emptyImage.jpg";
 import { storage } from "../../firebaseConfig";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";

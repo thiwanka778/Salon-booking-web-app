@@ -150,6 +150,7 @@ const EditCategory = () => {
     categoryUrl
   ) => {
     setUpdateCategoryId(id);
+    setImageUpload(null);
     setCategoryData({
       categoryTitle: categoryTitle.toLowerCase().trim(),
       categoryDes: categoryDes,
@@ -181,6 +182,7 @@ const EditCategory = () => {
   React.useEffect(() => {
     if (categoryLoading === false) {
       if (categoryUpdateSuccess === true) {
+        setImageUpload(null);
         toast.success("Updated Successfully !");
         dispatch(categoryReset());
         dispatch(getCategory());
