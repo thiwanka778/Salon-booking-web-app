@@ -19,6 +19,8 @@ import HomeIcon from '@mui/icons-material/Home';
 import InfoIcon from '@mui/icons-material/Info';
 import PhoneIcon from '@mui/icons-material/Phone';
 import AddToPhotosIcon from '@mui/icons-material/AddToPhotos';
+import salonLogo2 from "../../assets/salonLogo.png";
+import EditIcon from '@mui/icons-material/Edit';
 import { Input } from 'antd';
 
 const Header = () => {
@@ -70,14 +72,14 @@ const Header = () => {
   return (
     <>
       <div className="nav">
-        <img style={{ width: "80px", marginLeft: "10px", marginRight: "10px" }} src={salonLogo} alt="salon-logo" />
+        <img style={{ width: "80px", marginLeft: "10px", marginRight: "20px",transform:"scaleX(-1)"}} src={salonLogo2} alt="salon-logo" />
 
         <p style={{
-          marginRight: "auto", fontFamily: "'Ubuntu', sans-serif ",
+          marginRight: "auto", fontFamily:  "'Poppins', sans-serif",
           fontWeight: "bold",
-          letterSpacing: "3px", fontSize:screen<594? "1.5rem":"2.2rem",
-          color:"yellow",
-          textShadow:" 4px 4px 0.5px black",
+          letterSpacing: "3px", fontSize:screen<594? "1.2rem":"2.2rem",
+          color:"#f4fc03",
+          textShadow:" 2px 2px 0.2px black",
         }}>
           THISARA SALON
         </p>
@@ -184,7 +186,17 @@ const Header = () => {
 
         {user?.userType === "admin" && <NavLink to="/slider-images" className='nav-link-style-menu'>
           <MenuItem onClick={handleClose}>
-            <AddToPhotosIcon />&nbsp; Add Images</MenuItem>
+            <AddToPhotosIcon />&nbsp; Add Slider Images</MenuItem>
+        </NavLink>}
+
+        {user?.userType === "admin" && <NavLink to="/service" className='nav-link-style-menu'>
+          <MenuItem onClick={handleClose}>
+            <EditIcon />&nbsp; Edit Services</MenuItem>
+        </NavLink>}
+
+        {user?.userType === "admin" && <NavLink to="/edit-category" className='nav-link-style-menu'>
+          <MenuItem onClick={handleClose}>
+            <EditIcon />&nbsp; Edit Categories</MenuItem>
         </NavLink>}
 
 

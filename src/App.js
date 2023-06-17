@@ -17,6 +17,8 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogTitle from '@mui/material/DialogTitle';
 import Service from "./admin/Service/Service";
 import CategoryPage from "./components/CategoryPage/CategoryPage";
+import { getSlider, sliderReset } from "./features/sliderSlice";
+import EditCategory from "./admin/EditCategory/EditCategory";
 
 
 function App() {
@@ -24,6 +26,19 @@ function App() {
   const dispatch = useDispatch();
   const { screen, user, isLoading, isError, errorMessage, open } = useSelector((state) => state.user)
   const [windowWidth, setWindowWidth] = React.useState(window.innerWidth);
+  const {slider,sliderLoading,sliderSuccess}=useSelector((state)=>state.slider);
+  
+  React.useEffect(()=>{
+    dispatch(getSlider())
+      },[]);
+
+      
+  React.useEffect(()=>{
+    if(sliderSuccess===true){
+        dispatch(sliderReset())
+    }
+      },[sliderLoading])
+
 
   React.useEffect(() => {
     const handleResize = () => {
@@ -85,6 +100,7 @@ function App() {
             </Route>
 
             <Route element={<AdminAuth />}>
+              <Route path="edit-category" element={<EditCategory/>}/>
               <Route path="slider-images" element={<SliderImages />} />
               <Route path="service" element={<Service />} />
             </Route>

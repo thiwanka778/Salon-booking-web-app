@@ -6,15 +6,24 @@ import EditIcon from '@mui/icons-material/Edit';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import { useSelector, useDispatch } from 'react-redux';
 import AnchorLink from "react-anchor-link-smooth-scroll";
+import { getCategory } from '../../features/categorySlice';
 
-const ServiceCard = ({ category, _id, title,
+const ServiceCard = ({ categoryId, _id, title,
     price, des, url, updateServiceClick, estimatedTime,
     deleteIconClick, userDisplay, groomingBookingClick }) => {
+const {categoryArray}=useSelector((state)=>state.category);
 
     const dispatch = useDispatch();
 
     const { user, screen } = useSelector((state) => state.user);
 
+React.useEffect(()=>{
+dispatch(getCategory())
+},[]);
+
+const categoryObject=categoryArray?.find((item)=>item?._id===categoryId);
+console.log(categoryObject,"SErvice card")
+ const category=categoryObject?.categoryTitle;
 
     return (
 
@@ -34,7 +43,7 @@ const ServiceCard = ({ category, _id, title,
                         fontSize: "0.8rem", letterSpacing: "2px",
                         fontFamily: " 'Ubuntu', sans-serif",
                         marginTop: "2px",
-                    }}>{category[0].toUpperCase() + category.slice(1)}</p>
+                    }}>{category}</p>
                 </div>
             </div>
 
@@ -79,11 +88,11 @@ const ServiceCard = ({ category, _id, title,
                 }}>{estimatedTime}
                 </p>}
 
-                {category.trim().replace(/\s+/g, ' ') === "grooming packages" && userDisplay && <div
+                {/* {category.trim().replace(/\s+/g, ' ') === "grooming packages" && userDisplay && <div
                     onClick={() => groomingBookingClick(_id, title, price, estimatedTime, url)}
                     style={{ marginTop: "10px" }}>
                     <button className="booking-button">Contact Us</button>
-                </div>}
+                </div>} */}
 
 
 
@@ -95,7 +104,7 @@ const ServiceCard = ({ category, _id, title,
 
                     {!userDisplay && <AnchorLink href='#update-input-box'>   <Tooltip title="Update" >
 
-                        <IconButton onClick={() => updateServiceClick(_id, url, title, des, price, category, estimatedTime)} >
+                        <IconButton onClick={() => updateServiceClick(_id, url, title, des, price, categoryId, estimatedTime)} >
                             <EditIcon style={{ color: "green", fontSize: "25px" }} />
                         </IconButton>
                     </Tooltip>  </AnchorLink>}

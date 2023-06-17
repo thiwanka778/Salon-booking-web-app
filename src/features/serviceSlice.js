@@ -20,12 +20,13 @@ export const createService = createAsyncThunk(
     const token = object.token;
     const url = object.url;
     const des = object.des;
-    const title = object.title;
+    const title = object?.title.trim();
+    const categoryId=object?.categoryId;
     const price = object.price;
-    const category = object.category;
+    const category = object?.category.toLowerCase().trim();
     const estimatedTime=object.estimatedTime;
     try {
-      const response = await axios.post(`${BASE_URL}/api/service`, { url, title, des, price, category,estimatedTime, }, {
+      const response = await axios.post(`${BASE_URL}/api/service`, { url, title, des, price, categoryId,estimatedTime, }, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -92,13 +93,14 @@ export const updateService = createAsyncThunk(
     const token = object.token;
     const url = object.url;
     const des = object.des;
-    const title = object.title;
+    const title = object.title.trim();
     const price = object.price;
     const category = object.category;
+    const categoryId=object?.categoryId;
     const id=object.id;
     const estimatedTime=object.estimatedTime;
     try {
-      const response = await axios.put(`${BASE_URL}/api/service/${id}`, {url,des,title,price,category,estimatedTime},
+      const response = await axios.put(`${BASE_URL}/api/service/${id}`, {url,des,title,price,categoryId,estimatedTime},
         {
           headers: {
             Authorization: `Bearer ${token}`,
