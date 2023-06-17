@@ -6,6 +6,7 @@ import IconButton from "@mui/material/IconButton";
 import Tooltip from "@mui/material/Tooltip";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
+import AnchorLink from "react-anchor-link-smooth-scroll";
 
 const Categories = ({
   _id,
@@ -104,11 +105,13 @@ const Categories = ({
                 marginBottom:"10px",
               }}
             >
-              <Tooltip title="Update" onClick={()=>editCategoryIconClick(_id,categoryTitle,categoryDes,categoryUrl)}>
+            <AnchorLink href="#category-input">
+            <Tooltip title="Update" onClick={()=>editCategoryIconClick(_id,categoryTitle,categoryDes,categoryUrl)}>
                 <IconButton>
                   <EditIcon style={{ color: "white", fontSize: "25px" }} />
                 </IconButton>
               </Tooltip>
+              </AnchorLink> 
 
               <Tooltip title="Delete" onClick={()=>deleteCategoryIconClick(_id,categoryTitle)}>
                 <IconButton>

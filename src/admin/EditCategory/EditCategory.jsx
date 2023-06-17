@@ -243,7 +243,7 @@ const EditCategory = () => {
 
   return (
     <>
-      <div className="edit-category">
+      <div className="edit-category" id="category-input">
         {/* 779 */}
         <div
           style={{
@@ -256,6 +256,7 @@ const EditCategory = () => {
           }}
         >
           <section
+          
             style={{
               width: screen < 779 ? "100%" : "400px",
               display: "flex",
