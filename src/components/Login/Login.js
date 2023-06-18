@@ -2,7 +2,7 @@ import React from 'react'
 import "./Login.css";
 import { Input } from "antd";
 import {
-  userLogin, res, reset
+  userLogin, res, reset,whiteNeededPage
 } from '../../features/userSlice';
 import Backdrop from '@mui/material/Backdrop';
 import CircularProgress from '@mui/material/CircularProgress';
@@ -49,7 +49,11 @@ const Login = () => {
 
   React.useEffect(() => {
     dispatch(reset())
-  }, [formData])
+  }, [formData]);
+
+  React.useEffect(()=>{
+dispatch(whiteNeededPage());
+  },[])
 
 
 

@@ -94,7 +94,7 @@ function App() {
             <Route path="category/:id" element={<CategoryPage/>}/>
 
             <Route element={<RequiredAuth />}>
-              <Route path="sign-up" element={<SignUp />} />
+              {/* <Route path="sign-up" element={<SignUp />} /> */}
               <Route path="login" element={<Login />} />
               <Route path="forgot-password" element={<FP />} />
             </Route>

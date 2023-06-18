@@ -17,6 +17,8 @@ const initialState={
     successMessage:"",
 
     open:false,
+
+    stayLoginPage:false,
 }
 
 
@@ -165,7 +167,14 @@ const userSlice = createSlice({
     },
     closeModal:(state)=>{
       state.open=false;
+    },
+    whiteNeededPage:(state)=>{
+      state.stayLoginPage=true;
+    },
+    whiteNotNeededPage:(state)=>{
+      state.stayLoginPage=false;
     }
+    
 
   },
   extraReducers: (builder) => {
@@ -306,6 +315,6 @@ const userSlice = createSlice({
 
 });
 
-export const { reset, getScreenWidth,userLogout,openModal,closeModal} = userSlice.actions;
+export const { reset, getScreenWidth,userLogout,openModal,closeModal,whiteNeededPage,whiteNotNeededPage} = userSlice.actions;
 
 export default userSlice.reducer;

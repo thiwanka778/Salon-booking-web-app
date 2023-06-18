@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import Categories from "../../admin/Categories/Categories";
 import { getSlider, sliderReset } from "../../features/sliderSlice";
 import {getCategory} from "../../features/categorySlice";
+import { whiteNotNeededPage } from "../../features/userSlice";
 
 const Home = () => {
   // console.log("catego", categorydata);
@@ -20,11 +21,13 @@ const Home = () => {
 
   React.useEffect(() => {
     dispatch(getSlider());
+   
+    dispatch(getCategory());
     
   }, []);
   React.useEffect(() => {
  
-    dispatch(getCategory())
+    dispatch(whiteNotNeededPage());
   }, []);
 
   React.useEffect(() => {

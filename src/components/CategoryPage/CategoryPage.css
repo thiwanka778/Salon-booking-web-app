@@ -6,7 +6,7 @@
     scroll-behavior: smooth;
   }
   .category-page{
-    padding-top: 70px;
+  
     width:"100%";
     display:flex;
     flex-direction: column;

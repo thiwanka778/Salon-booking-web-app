@@ -15,6 +15,7 @@ import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import Button from "@mui/material/Button";
+import { whiteNotNeededPage } from "../../features/userSlice";
 import {
   createCategory,
   getCategory,
@@ -139,6 +140,7 @@ const EditCategory = () => {
       } else if (categoryErrorMessage === "Not authorized") {
         dispatch(userLogout());
         dispatch(openModal());
+        dispatch(categoryReset());
       }
     }
   }, [categoryLoading]);
@@ -196,6 +198,7 @@ const EditCategory = () => {
     } else if (categoryErrorMessage === "Not authorized") {
       dispatch(openModal());
       dispatch(userLogout());
+      dispatch(categoryReset());
     }
   }, [categoryLoading]);
 
@@ -207,6 +210,10 @@ const EditCategory = () => {
   const handleClosed = () => {
     setOpend(false);
   };
+  React.useEffect(() => {
+ 
+    dispatch(whiteNotNeededPage());
+  }, []);
 
   const deleteCategoryButtonClick = () => {
     const token = user?.token;
@@ -225,6 +232,7 @@ const EditCategory = () => {
     }else if(categoryErrorMessage==="Not authorized"){
       dispatch(userLogout());
       dispatch(openModal());
+      dispatch(categoryReset());
 
     }
   }, [categoryLoading]);
@@ -244,6 +252,29 @@ const EditCategory = () => {
   return (
     <>
       <div className="edit-category" id="category-input">
+      <div
+            style={{
+              display: "flex",
+              width: "100%",
+              alignItems: "center",
+              justifyContent: "center",
+              marginBottom: "5px",
+              padding: screen < 671 ? "0 5px 0 30px" : "0px",
+            }}
+          >
+            <p
+              style={{
+                fontSize: screen < 451 ? "2rem" : "3rem",
+                color: "#736f78",
+                fontFamily: "'Ubuntu', sans-serif",
+
+                fontWeight: "bold",
+                letterSpacing: "3px",
+              }}
+            >
+            Customize your categories
+            </p>
+          </div>
         {/* 779 */}
         <div
           style={{
@@ -404,8 +435,8 @@ const EditCategory = () => {
               // background:"orange",
               // minHeight:"100vh",
               display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
+              // alignItems: "center",
+               justifyContent: "center",
             }}
           >
             <img

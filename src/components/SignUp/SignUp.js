@@ -17,6 +17,7 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import verify from "../../assets/verify.jpg";
 import { useNavigate } from 'react-router-dom';
+import { whiteNeededPage } from '../../features/userSlice';
 
 
 const Alert = React.forwardRef(function Alert(props, ref) {
@@ -41,6 +42,11 @@ const navigate=useNavigate();
     isValid: true,
     message: ""
   });
+
+  React.useEffect(() => {
+ 
+    dispatch(whiteNeededPage());
+  }, []);
 
 
 

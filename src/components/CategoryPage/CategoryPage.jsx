@@ -18,6 +18,7 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
 import Button from "@mui/material/Button";
 import { getCategory } from "../../features/categorySlice";
+import { whiteNotNeededPage } from "../../features/userSlice";
 const { TextArea } = Input;
 
 const CategoryPage = () => {
@@ -44,15 +45,15 @@ const CategoryPage = () => {
     text: "",
   });
 
-  let categoryName="";
-if(category){
-    const categoryObject=categoryArray?.find((item)=>item?._id===category);
-     categoryName=categoryObject?.categoryTitle?.toLowerCase().trim();
-}
+  let categoryName = "";
+  if (category) {
+    const categoryObject = categoryArray?.find(
+      (item) => item?._id === category
+    );
+    categoryName = categoryObject?.categoryTitle?.toLowerCase().trim();
+  }
 
-console.log(categoryName,"\n\n\n\n\n\nBULLA")
-  
-
+  // console.log(categoryName, "\n\n\n\n\n\nBULLA");
 
   // const handleInputChange = (event) => {
   //     const { name, value } = event.target;
@@ -85,6 +86,11 @@ console.log(categoryName,"\n\n\n\n\n\nBULLA")
     dispatch(getCategory());
   }, []);
 
+  React.useEffect(() => {
+ 
+    dispatch(whiteNotNeededPage());
+  }, []);
+
   const showModal = () => {
     setVisible(true);
   };
@@ -115,7 +121,7 @@ console.log(categoryName,"\n\n\n\n\n\nBULLA")
     setVisible(true);
   };
 
-//   console.log(service, "SERVices ===>");
+  //   console.log(service, "SERVices ===>");
   const serviceDisplay = service?.map((obj) => {
     if (category === obj?.categoryId) {
       return (
@@ -130,34 +136,89 @@ console.log(categoryName,"\n\n\n\n\n\nBULLA")
     }
   });
 
-//   console.log("\n\n\n\nserviceDisplay", serviceDisplay);
+  //   console.log("\n\n\n\nserviceDisplay", serviceDisplay);
 
-  const sendEmail = () => {
+  // const sendEmail = () => {
+  //   if (form.name !== "" && form.phoneNumber !== "" && form.text !== "") {
+  //     setVisible(false);
+  //     setEmailLoading(true);
+  //     const sendingMessage = `I am ${form.name}. I need this ${data.title} service. This is my phone number : ${form.phoneNumber}.
+  //           Here is the details : ${form.text}`;
+  //     axios
+  //       .post(`${BASE_URL}/email/sender`, { emailText: sendingMessage })
+  //       .then(() => {
+  //         console.log("Email sent successfully");
+  //         setEmailLoading(false);
+  //         toast.success("Message sent successfully !");
+  //         setVisible(false);
+  //         setForm({ name: "", phoneNumber: "", text: "" });
+  //         // Optionally, you can show a success message or perform any other actions
+  //       })
+  //       .catch((error) => {
+  //         console.log("Error sending email:", error);
+  //         setEmailLoading(false);
+  //         setVisible(false);
+  //         // Optionally, you can show an error message or handle the error
+  //       });
+  //   } else {
+  //     toast.error("Input fields are required !");
+  //   }
+  // };
+
+  async function sendWhatsAppMessage() {
+    const apiUrl = "https://graph.facebook.com/v17.0/102153772927786/messages";
+    const bearerToken = process.env.REACT_APP_WHATSAPP_MESSAGE_TOKEN;
     if (form.name !== "" && form.phoneNumber !== "" && form.text !== "") {
+      const sendingMessage = `\nI am ${form.name}.\nI need this ${data.title} service.\nThis is my phone number : ${form.phoneNumber}.\nHere is the details : ${form.text}\n`;
       setVisible(false);
       setEmailLoading(true);
-      const sendingMessage = `I am ${form.name}. I need this ${data.title} service. This is my phone number : ${form.phoneNumber}.
-            Here is the details : ${form.text}`;
-      axios
-        .post(`${BASE_URL}/email/sender`, { emailText: sendingMessage })
-        .then(() => {
-          console.log("Email sent successfully");
-          setEmailLoading(false);
-          toast.success("Message sent successfully !");
-          setVisible(false);
-          setForm({ name: "", phoneNumber: "", text: "" });
-          // Optionally, you can show a success message or perform any other actions
-        })
-        .catch((error) => {
-          console.log("Error sending email:", error);
-          setEmailLoading(false);
-          setVisible(false);
-          // Optionally, you can show an error message or handle the error
+      const messageBody = {
+        messaging_product: "whatsapp",
+        recipient_type: "individual",
+        to: "94707725663",
+        type: "text",
+        text: {
+          body: sendingMessage,
+        },
+      };
+
+      try {
+        const response = await fetch(apiUrl, {
+          method: "POST",
+          headers: {
+            Authorization: `Bearer ${bearerToken}`,
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(messageBody),
         });
+
+        if (response.ok) {
+          setVisible(false);
+          setEmailLoading(false);
+          console.log("Message sent successfully");
+          toast.success("Message sent successfully !");
+          setForm({ name: "", phoneNumber: "", text: "" });
+          // Handle success scenario
+        } else {
+          setVisible(false);
+          setEmailLoading(false);
+          // console.error("Failed to send message");
+          toast.error("Failed to send message");
+          setForm({ name: "", phoneNumber: "", text: "" });
+          // Handle error scenario
+        }
+      } catch (error) {
+        setVisible(false);
+        setEmailLoading(false);
+        setForm({ name: "", phoneNumber: "", text: "" });
+        //   console.error("An error occurred", error);
+        toast.error("An error occurred");
+        // Handle error scenario
+      }
     } else {
-      toast.error("Input fields are required !");
+      toast.error("All fields are required !");
     }
-  };
+  }
 
   return (
     <>
@@ -179,7 +240,36 @@ console.log(categoryName,"\n\n\n\n\n\nBULLA")
           </div>
         </div>
       ) : (
-        <div className="category-page">{serviceDisplay}</div>
+        <div style={{ width: "100%", paddingTop: "110px" }}>
+          <div
+            style={{
+              display: "flex",
+              width: "100%",
+              alignItems: "center",
+              justifyContent: "center",
+              marginBottom: "5px",
+              padding: screen < 671 ? "0 5px 0 30px" : "0px",
+            }}
+          >
+            <p
+              style={{
+                fontSize: screen < 451 ? "2rem" : "3rem",
+                color: "#736f78",
+                fontFamily: "'Ubuntu', sans-serif",
+
+                fontWeight: "bold",
+                letterSpacing: "3px",
+              }}
+            >
+              {categoryName
+                ? categoryName[0].toUpperCase() + categoryName.slice(1)
+                : ""}{" "}
+              Category
+            </p>
+          </div>
+
+          <div className="category-page">{serviceDisplay}</div>
+        </div>
       )}
 
       {/* <div>
@@ -256,15 +346,6 @@ console.log(categoryName,"\n\n\n\n\n\nBULLA")
               }}
               src={data?.url}
             />
-            {/* <Image
-width={200}
-    style={{
-        borderRadius: "10px", marginBottom: "1rem",
-        boxShadow: "rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px"
-    }}
-
-    src={data?.url}
-/> */}
 
             <p
               style={{
@@ -383,7 +464,7 @@ width={200}
           <Button onClick={handleCancel} variant="contained" color="error">
             Cancel
           </Button>
-          <Button onClick={sendEmail} variant="contained" autoFocus>
+          <Button onClick={sendWhatsAppMessage} variant="contained" autoFocus>
             submit
           </Button>
         </DialogActions>
