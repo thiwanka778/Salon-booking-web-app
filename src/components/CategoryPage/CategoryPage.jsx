@@ -202,7 +202,7 @@ const CategoryPage = () => {
         } else {
           setVisible(false);
           setEmailLoading(false);
-          // console.error("Failed to send message");
+           console.error("Failed to send message");
           toast.error("Failed to send message");
           setForm({ name: "", phoneNumber: "", text: "" });
           // Handle error scenario
@@ -211,7 +211,7 @@ const CategoryPage = () => {
         setVisible(false);
         setEmailLoading(false);
         setForm({ name: "", phoneNumber: "", text: "" });
-        //   console.error("An error occurred", error);
+         console.error("An error occurred", error);
         toast.error("An error occurred");
         // Handle error scenario
       }
