@@ -19,6 +19,9 @@ import Service from "./admin/Service/Service";
 import CategoryPage from "./components/CategoryPage/CategoryPage";
 import { getSlider, sliderReset } from "./features/sliderSlice";
 import EditCategory from "./admin/EditCategory/EditCategory";
+import About from "./components/About/About";
+import Footer from "./components/Footer/Footer";
+import NoMatch from "./components/NoMatch/NoMatch";
 
 
 function App() {
@@ -92,6 +95,8 @@ function App() {
 
             <Route path="/" element={<Home />} />
             <Route path="category/:id" element={<CategoryPage/>}/>
+            <Route path="about" element={<About/>}/>
+            <Route path="*" element={<NoMatch/>}/>
 
             <Route element={<RequiredAuth />}>
               {/* <Route path="sign-up" element={<SignUp />} /> */}
@@ -110,7 +115,7 @@ function App() {
           </Routes>
 
         </div>
-
+<Footer/>
       </div>
 
 

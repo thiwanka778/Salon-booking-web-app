@@ -7,7 +7,7 @@ const initialState = {
   sliderError: false,
   sliderSuccess: false,
   sliderErrorMessage: "",
-  slider: null,
+  slider: [],
   sliderDeleteSuccess: false,
 }
 
@@ -114,7 +114,7 @@ const sliderSlice = createSlice({
       // getSlider
       .addCase(getSlider.pending, (state) => {
         state.sliderLoading = true;
-        state.slider = null;
+        state.slider = [];
       })
       .addCase(getSlider.fulfilled, (state, action) => {
         state.sliderLoading = false;
@@ -122,7 +122,7 @@ const sliderSlice = createSlice({
       })
       .addCase(getSlider.rejected, (state, action) => {
         state.sliderLoading = false;
-        state.slider = null;
+        state.slider = [];
       })
 
       // delete Slider

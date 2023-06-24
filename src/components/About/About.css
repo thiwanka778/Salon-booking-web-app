@@ -1,0 +1,76 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  scroll-behavior: smooth;
+}
+.about {
+  min-height: 100vh;
+  padding-top: 130px;
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.about-page {
+  width: 80%;
+
+  margin: 0 auto;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.about-title {
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  font-family: "Ubuntu", sans-serif;
+}
+
+.about-description {
+  font-size: 16px;
+  line-height: 1.5;
+  margin-bottom: 20px;
+  font-family: "Poppins", sans-serif;
+}
+
+.diploma-certificates {
+  width: 80%;
+
+  margin: 0 auto;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.certificates-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  font-family: "Ubuntu", sans-serif;
+}
+
+.certificate-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 40px;
+  flex-direction: column;
+}
+
+.certificate-image {
+  width: 500px;
+  height: auto;
+  /* margin-right: 10px; */
+}
+
+.certificate-caption {
+  font-weight: bold;
+  font-size:1rem;
+  font-family: "Poppins", sans-serif;
+}

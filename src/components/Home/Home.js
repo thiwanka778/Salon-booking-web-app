@@ -117,6 +117,8 @@ const Home = () => {
       
 
       <div className="category-container">{categoryDisplay}</div>
+
+
     </div>
   );
 };

@@ -136,7 +136,8 @@ const Header = () => {
         )}
 
         {screen >= 950 && (
-          <p
+          <NavLink to="/about"
+          className="nav-link-style"
             style={{
               marginRight: "2rem",
               fontFamily: "'Poppins', sans-serif ",
@@ -146,10 +147,10 @@ const Header = () => {
             }}
           >
             About Us
-          </p>
+          </NavLink>
         )}
 
-        {screen >= 950 && (
+        {/* {screen >= 950 && (
           <p
             style={{
               marginRight: "2rem",
@@ -161,7 +162,7 @@ const Header = () => {
           >
             Contact Us
           </p>
-        )}
+        )} */}
 
         {/* {screen >= 668 && <p onClick={handleClickProfile} style={{
          cursor:"pointer",
@@ -293,14 +294,19 @@ const Header = () => {
           </MenuItem>
         </NavLink>
 
-        <MenuItem onClick={handleClose2}>
+<NavLink to="/about" className="nav-link-style-menu" >
+<MenuItem onClick={handleClose2}>
           <InfoIcon />
           &nbsp; About Us
         </MenuItem>
-        <MenuItem onClick={handleClose2}>
+</NavLink>
+        
+
+        {/* <MenuItem onClick={handleClose2}>
           <PhoneIcon />
           &nbsp; Contact Us
-        </MenuItem>
+        </MenuItem> */}
+
       </Menu>
     </>
   );
