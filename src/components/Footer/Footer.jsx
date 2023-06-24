@@ -3,7 +3,9 @@ import "./Footer.css";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import InstagramIcon from "@mui/icons-material/Instagram";
+import { FaTiktok } from 'react-icons/fa';
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
+import YouTubeIcon from '@mui/icons-material/YouTube';
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 
@@ -70,21 +72,25 @@ const Footer = () => {
           justifyContent: "space-evenly",
         }}
       >
-        <a href="https://www.google.lk" target="_blank" style={{ width: "fit-content",cursor:"pointer", }}  >
+        <a href="https://web.facebook.com/pradeep.salgadu.1?mibextid=ZbWKwL&_rdc=2&_rdr" target="_blank" style={{ width: "fit-content",cursor:"pointer", }}  >
             
             <FacebookIcon style={{color:"white"}}/>
         </a>
 
-        <a href="https://www.google.lk"  target="_blank" style={{ width: "fit-content",cursor:"pointer",  }}>
-            <TwitterIcon style={{color:"white"}}/>
+        <a href="https://www.youtube.com/@thisarasalon9055"  target="_blank" style={{ width: "fit-content",cursor:"pointer",  }}>
+            <YouTubeIcon style={{color:"white"}}/>
         </a>
 
-        <a href="https://www.google.lk"  target="_blank" style={{ width: "fit-content" ,cursor:"pointer", }}>
+        <a href="https://www.instagram.com/pradeepsalgadu/?igshid=ZGUzMzM3NWJiOQ%3D%3D"  target="_blank" style={{ width: "fit-content" ,cursor:"pointer", }}>
             <InstagramIcon style={{color:"white"}}/>
         </a>
 
-        <a href="https://wa.me/+94775085369"  target="_blank" style={{ width: "fit-content",cursor:"pointer",  }}>
+        <a href="https://chat.whatsapp.com/JqILuoFcv5b1lc9vf1dsGR"  target="_blank" style={{ width: "fit-content",cursor:"pointer",  }}>
             <WhatsAppIcon style={{color:"white"}}/>
+        </a>
+
+        <a href="https://www.tiktok.com/@thisarasalon"  target="_blank" style={{ width: "fit-content",cursor:"pointer",  }}>
+        <FaTiktok color="#ffffff" size={21} />
         </a>
 
       </div>

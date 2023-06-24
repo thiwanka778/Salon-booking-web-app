@@ -6,8 +6,8 @@
     scroll-behavior: smooth;
   }
   .footer{
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
+    /* border-top-left-radius: 10px;
+    border-top-right-radius: 10px; */
     padding:15px;
     background: #343536;
     width:100%;
