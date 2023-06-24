@@ -102,21 +102,20 @@
   /* styles.css */
 
   .typing-container {
-    padding:0 20px 0 20px;
+    padding:0 60px 0 60px;
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
     margin-bottom: 10px;
     font-weight: bold;
-    position: relative; /* Add this line */
+  
   }
   
   .typing-text {
     font-family: 'Ubuntu', sans-serif;
     letter-spacing: 2px;
     font-size: 2rem;
-    position: relative;
     animation: colorTransition 10s linear infinite;
   }
  
