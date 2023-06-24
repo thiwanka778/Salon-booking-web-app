@@ -204,7 +204,7 @@ const EditCategory = () => {
 
   const deleteCategoryIconClick = (id, categoryTitle) => {
     setDeleteCategoryData({ _id: id, categoryTitle: categoryTitle });
-    console.log(id, categoryTitle);
+  //  console.log(id, categoryTitle);
     setOpend(true);
   };
   const handleClosed = () => {
@@ -225,6 +225,9 @@ const EditCategory = () => {
   React.useEffect(() => {
     if (categoryLoading === false) {
       if (categoryDeleteSuccess === true) {
+        
+        setDeleteCategoryData({_id: "",
+        categoryTitle: "",})
         dispatch(categoryReset());
         dispatch(getCategory());
         toast.success("Deleted Successfully !")
