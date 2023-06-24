@@ -8,7 +8,7 @@
 }
 .home{
     padding-top: 110px;
-    
+   
 
 }
 
@@ -98,5 +98,48 @@
     flex-direction: column;
     align-items: center;
   }
+
+  /* styles.css */
+
+  .typing-container {
+    padding:0 20px 0 20px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+    font-weight: bold;
+    position: relative; /* Add this line */
+  }
+  
+  .typing-text {
+    font-family: 'Ubuntu', sans-serif;
+    letter-spacing: 2px;
+    font-size: 2rem;
+    position: relative;
+    animation: colorTransition 10s linear infinite;
+  }
+ 
+  @keyframes colorTransition {
+    0% {
+      color: black;
+    }
+    33% {
+      color: red;
+    }
+    66% {
+      color: yellow;
+    }
+    100% {
+      color: red;
+    }
+  }
+
+
+ 
+  
+
+
+
 
   
