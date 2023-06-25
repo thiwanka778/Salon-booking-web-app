@@ -96,12 +96,12 @@ const CategoryPage = () => {
   };
 
   const handleOk = (e) => {
-    console.log(e);
+   // console.log(e);
     setVisible(false);
   };
 
   const handleCancel = (e) => {
-    console.log(e);
+   // console.log(e);
     setVisible(false);
   };
 
@@ -117,7 +117,7 @@ const CategoryPage = () => {
 
   const groomingBookingClick = (id, title, price, estimatedTime, url) => {
     setData({ _id: id, title, price, estimatedTime, url });
-    console.log(id, title, price, estimatedTime);
+    //console.log(id, title, price, estimatedTime);
     setVisible(true);
   };
 
@@ -195,7 +195,7 @@ const CategoryPage = () => {
         if (response.ok) {
           setVisible(false);
           setEmailLoading(false);
-          console.log("Message sent successfully");
+         // console.log("Message sent successfully");
           toast.success("Message sent successfully !");
           setForm({ name: "", phoneNumber: "", text: "" });
           // Handle success scenario

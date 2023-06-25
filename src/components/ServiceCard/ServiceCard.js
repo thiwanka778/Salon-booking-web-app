@@ -22,7 +22,7 @@ dispatch(getCategory())
 },[]);
 
 const categoryObject=categoryArray?.find((item)=>item?._id===categoryId);
-console.log(categoryObject,"SErvice card")
+//console.log(categoryObject,"SErvice card")
  const category=categoryObject?.categoryTitle;
 
     return (

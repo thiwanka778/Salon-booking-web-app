@@ -75,7 +75,7 @@ const Service = () => {
   };
 
   const handleChangeCategorySelect = (inputValue) => {
-    console.log(inputValue,"INPUT VALUE")
+   // console.log(inputValue,"INPUT VALUE")
     setCategorySelect(inputValue?.toLowerCase().trim());
   };
 
@@ -87,7 +87,7 @@ const Service = () => {
     }));
   };
 
-  console.log(service);
+  //console.log(service);
 
   const uploadImage = () => {
     if (imageUpload === null) return;
@@ -104,7 +104,7 @@ const Service = () => {
         return getDownloadURL(imageRef);
       })
       .then((downloadURL) => {
-        console.log("File available at", downloadURL);
+       // console.log("File available at", downloadURL);
         setUploadLoading(false);
         //setUrl(downloadURL)
         setServiceForm((prevState) => {
@@ -163,7 +163,7 @@ const Service = () => {
   };
 
   const imageUploadChange = (event) => {
-    console.log("inside imageUploadChange function ", event.target.files[0]);
+   // console.log("inside imageUploadChange function ", event.target.files[0]);
     setImageUpload(event?.target?.files[0]);
   };
 
@@ -299,7 +299,7 @@ const Service = () => {
 
   let servicesDisplay;
 
-console.log(categorySelect)
+//console.log(categorySelect)
 
   if (service !== null && service) {
     servicesDisplay = service?.map((item) => {
@@ -366,7 +366,7 @@ console.log(categorySelect)
     }
   }, [serviceLoading]);
 
-  console.log(serviceForm);
+  //console.log(serviceForm);
 
   return (
     <>

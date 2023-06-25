@@ -22,7 +22,7 @@ if(sliderSuccess===true){
 }
   },[sliderLoading])
 
-  console.log(slider?slider:"Slider is empty");
+ // console.log(slider?slider:"Slider is empty");
 
 
   let sliderDisplay=[];

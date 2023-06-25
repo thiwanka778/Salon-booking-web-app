@@ -188,7 +188,7 @@ const userSlice = createSlice({
        
       })
       .addCase(userRegister.fulfilled, (state, action) => {
-        console.log(action.payload)
+        //console.log(action.payload)
         state.isLoading = false;
         state.isSuccess=true;
         state.errorMessage="";
@@ -297,7 +297,7 @@ const userSlice = createSlice({
         
       })
       .addCase(getUser.rejected, (state, action) => {
-        console.log("getuser",action.payload)
+      //  console.log("getuser",action.payload)
         state.isLoading = false;
         state.errorMessage=action.payload;
         state.isError=true;

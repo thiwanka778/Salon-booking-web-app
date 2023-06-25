@@ -104,7 +104,7 @@ const EditCategory = () => {
       });
   };
 
-  console.log(categoryData);
+  //console.log(categoryData);
 
   const onSaveClick = () => {
     if (

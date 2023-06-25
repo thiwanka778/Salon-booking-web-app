@@ -16,7 +16,7 @@ const initialState = {
 export const createService = createAsyncThunk(
   'admin/createService',
   async (object, thunkAPI) => {
-    console.log(object)
+    //console.log(object)
     const token = object.token;
     const url = object.url;
     const des = object.des;

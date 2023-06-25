@@ -38,7 +38,7 @@ const SliderImages = () => {
         return getDownloadURL(imageRef);
       })
       .then((downloadURL) => {
-        console.log('File available at', downloadURL);
+        //console.log('File available at', downloadURL);
         setUploadLoading(false);
         setUrl(downloadURL)
         // Use the downloadURL as needed, such as saving it to a database or displaying it to the user
