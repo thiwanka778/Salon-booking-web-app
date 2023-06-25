@@ -21,14 +21,16 @@ import PhoneIcon from "@mui/icons-material/Phone";
 import AddToPhotosIcon from "@mui/icons-material/AddToPhotos";
 import salonLogo2 from "../../assets/salonLogo.png";
 import EditIcon from "@mui/icons-material/Edit";
+import { useNavigate } from "react-router-dom";
 import { Input } from "antd";
 
 const Header = () => {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const [anchorProfile, setAnchorProfile] = React.useState(null);
   const openProfile = Boolean(anchorProfile);
   const [anchorEl2, setAnchorEl2] = React.useState(null);
-  const { user, screen ,stayLoginPage} = useSelector((state) => state.user);
+  const { user, screen, stayLoginPage } = useSelector((state) => state.user);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
 
@@ -70,6 +72,7 @@ const Header = () => {
     <>
       <div className="nav">
         <img
+          onClick={() => navigate("/")}
           style={{
             width: "80px",
             marginLeft: "10px",
@@ -81,7 +84,9 @@ const Header = () => {
         />
 
         <p
+          onClick={() => navigate("/")}
           style={{
+            cursor: "pointer",
             marginRight: "auto",
             fontFamily: "'Poppins', sans-serif",
             fontWeight: "bold",
@@ -93,6 +98,7 @@ const Header = () => {
         >
           <span
             style={{
+              cursor: "pointer",
               marginRight: "auto",
               fontFamily: "'Poppins', sans-serif",
               fontWeight: "bold",
@@ -106,6 +112,7 @@ const Header = () => {
           </span>{" "}
           <span
             style={{
+              cursor: "pointer",
               textShadow: " 2px 2px 0.2px black",
               marginRight: "auto",
               fontFamily: "'Poppins', sans-serif",
@@ -128,7 +135,7 @@ const Header = () => {
               fontSize: "1.2rem",
               fontFamily: "'Poppins', sans-serif  ",
               letterSpacing: "2px",
-              color:stayLoginPage?"white":"black",
+              color: stayLoginPage ? "white" : "black",
             }}
           >
             Home
@@ -136,14 +143,15 @@ const Header = () => {
         )}
 
         {screen >= 950 && (
-          <NavLink to="/about"
-          className="nav-link-style"
+          <NavLink
+            to="/about"
+            className="nav-link-style"
             style={{
               marginRight: "2rem",
               fontFamily: "'Poppins', sans-serif ",
               fontSize: "1.2rem",
               letterSpacing: "2px",
-              color:stayLoginPage?"white":"black",
+              color: stayLoginPage ? "white" : "black",
             }}
           >
             About Us
@@ -294,19 +302,17 @@ const Header = () => {
           </MenuItem>
         </NavLink>
 
-<NavLink to="/about" className="nav-link-style-menu" >
-<MenuItem onClick={handleClose2}>
-          <InfoIcon />
-          &nbsp; About Us
-        </MenuItem>
-</NavLink>
-        
+        <NavLink to="/about" className="nav-link-style-menu">
+          <MenuItem onClick={handleClose2}>
+            <InfoIcon />
+            &nbsp; About Us
+          </MenuItem>
+        </NavLink>
 
         {/* <MenuItem onClick={handleClose2}>
           <PhoneIcon />
           &nbsp; Contact Us
         </MenuItem> */}
-
       </Menu>
     </>
   );
