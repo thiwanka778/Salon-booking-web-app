@@ -263,6 +263,7 @@ const EditCategory = () => {
               justifyContent: "center",
               marginBottom: "5px",
               padding: screen < 671 ? "0 5px 0 30px" : "0px",
+              marginTop:"20px",
             }}
           >
             <p
@@ -270,7 +271,7 @@ const EditCategory = () => {
                 fontSize: screen < 451 ? "2rem" : "3rem",
                 color: "#736f78",
                 fontFamily: "'Ubuntu', sans-serif",
-
+        
                 fontWeight: "bold",
                 letterSpacing: "3px",
               }}

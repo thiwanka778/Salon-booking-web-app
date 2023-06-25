@@ -37,10 +37,11 @@ const Home = () => {
     return <Categories key={item._id} {...item} usersHomePage={true} />;
   });
 
-  console.log(categoryDisplay);
+ // console.log(categoryDisplay);
 
   return (
     <div className="home">
+    
       <div
         style={{
           display: "flex",
@@ -51,27 +52,39 @@ const Home = () => {
           alignItems: "center",
         }}
       >
-        {/* <p style={{
-          marginTop: "10px",
-          fontWeight: "bold",
-          fontSize: screen < 621 ? "20px" : "45px",
-          marginBottom: "10px",
-          letterSpacing: "3px",
-          fontFamily: " 'Ubuntu', sans-serif "
-        }}>Welcome to Thisara Salon</p> */}
-
-        {/* {user && user?.userType === "admin" && <div style={{ marginLeft: screen < 820 ? "0px" : "20px", letterSpacing: "2px" }}>
-          <p className="add-button" onClick={() => navigate("/slider-images")}>ADD IMAGES</p>
-        </div>} */}
+      
       </div>
 
-      <div
-        style={{
-          marginBottom: "30px",
-        }}
-      >
-        <Sliderr />
-      </div>
+     
+ <div
+ style={{
+   marginBottom: "30px",
+ }}
+>
+<Sliderr />
+</div>
+      
+
+     
+{categoryArray?.length<1 && <div className="wifi-loader-master">
+<div id="wifi-loader">
+    <svg className="circle-outer" viewBox="0 0 86 86">
+        <circle className="back" cx="43" cy="43" r="40"></circle>
+        <circle className="front" cx="43" cy="43" r="40"></circle>
+        <circle className="new" cx="43" cy="43" r="40"></circle>
+    </svg>
+    <svg className="circle-middle" viewBox="0 0 60 60">
+        <circle className="back" cx="30" cy="30" r="27"></circle>
+        <circle className="front" cx="30" cy="30" r="27"></circle>
+    </svg>
+    <svg className="circle-inner" viewBox="0 0 34 34">
+        <circle className="back" cx="17" cy="17" r="14"></circle>
+        <circle className="front" cx="17" cy="17" r="14"></circle>
+    </svg>
+    {/* <div class="text" data-text="Loading..."></div> */}
+</div>
+</div>}
+     
 
      
 

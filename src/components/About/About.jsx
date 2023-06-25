@@ -51,6 +51,16 @@ const About = () => {
 
       <div className="certificate-item">
         <img
+          src={safe}
+          alt="Development and Business Management Diploma"
+          className="certificate-image"
+          style={{width:screen<553?"90%":"500px"}}
+        />
+        {/* <p className="certificate-caption">Development and Business Management</p> */}
+      </div>
+
+      <div className="certificate-item">
+        <img
           src={beauty}
           alt="Beautician Makeup Diploma"
           className="certificate-image"
@@ -66,7 +76,7 @@ const About = () => {
           className="certificate-image"
           style={{width:screen<553?"90%":"500px"}}
         />
-        <p className="certificate-caption">Massage Therapy</p>
+        <p  className="certificate-caption">Massage Therapy</p>
       </div>
 
 
@@ -88,7 +98,7 @@ const About = () => {
           // className="certificate-image"
           style={{width:screen<553?"90%":"500px"}}
         />
-        <p className="certificate-caption">Accidental Emergency Risk Management</p>
+        <p  className="certificate-caption">Accidental Emergency Risk Management</p>
       </div>
 
 
@@ -102,15 +112,7 @@ const About = () => {
         <p className="certificate-caption">Development and Business Management</p>
       </div>
 
-      <div className="certificate-item">
-        <img
-          src={safe}
-          alt="Development and Business Management Diploma"
-          className="certificate-image"
-          style={{width:screen<553?"90%":"500px"}}
-        />
-        {/* <p className="certificate-caption">Development and Business Management</p> */}
-      </div>
+     
 
 
     </div>

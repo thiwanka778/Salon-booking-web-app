@@ -60,7 +60,7 @@ const Footer = () => {
           fontSize: "1rem",
         }}
       >
-        077-5677889
+       077-7077752
       </p>
 
       <div

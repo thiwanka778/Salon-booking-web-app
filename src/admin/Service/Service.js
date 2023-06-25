@@ -377,6 +377,7 @@ console.log(categorySelect)
               width: "100%",
               alignItems: "center",
               justifyContent: "center",
+              marginTop:"20px",
               marginBottom: "5px",
               padding: screen < 671 ? "0 5px 0 30px" : "0px",
             }}
