@@ -16,8 +16,7 @@
 }
 
 .about-page {
-  width: 80%;
-
+  width: 95%;
   margin: 0 auto;
   padding: 2rem;
   display: flex;
@@ -39,14 +38,7 @@
   font-family: "Poppins", sans-serif;
 }
 
-.diploma-certificates {
-  width: 80%;
-  margin: 0 auto;
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
+
 
 .certificates-title {
   font-size: 24px;

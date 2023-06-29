@@ -8,6 +8,7 @@ import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 import YouTubeIcon from '@mui/icons-material/YouTube';
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
+import LocationOnIcon from '@mui/icons-material/LocationOn';
 
 const Footer = () => {
     const {screen}=useSelector((state)=>state.user)
@@ -66,7 +67,7 @@ const Footer = () => {
       <div
         style={{
             marginTop:"1rem",
-          width:screen<420? "100%" :"400px",
+          width:screen<500? "100%" :"400px",
           display: "flex",
           alignItems: "center",
           justifyContent: "space-evenly",
@@ -91,6 +92,10 @@ const Footer = () => {
 
         <a href="https://www.tiktok.com/@thisarasalon"  target="_blank" style={{ width: "fit-content",cursor:"pointer",  }}>
         <FaTiktok color="#ffffff" size={21} />
+        </a>
+
+        <a href="https://www.google.com/maps/place/Thisara+Salon/@6.5618636,79.9819874,21z/data=!4m14!1m7!3m6!1s0x3ae231b0f626131f:0xe0335b0648ce981f!2sThisara+Salon!8m2!3d6.5619522!4d79.9819879!16s%2Fg%2F11f6g3t8x9!3m5!1s0x3ae231b0f626131f:0xe0335b0648ce981f!8m2!3d6.5619522!4d79.9819879!16s%2Fg%2F11f6g3t8x9?entry=ttu"  target="_blank" style={{ width: "fit-content",cursor:"pointer",  }}>
+        <LocationOnIcon style={{color:"white",fontSize:"22"}} />
         </a>
 
       </div>

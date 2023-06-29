@@ -10,7 +10,24 @@ import { useSelector } from 'react-redux';
 
 const About = () => {
 
-    const {screen}=useSelector((state)=>state.user)
+    const {screen}=useSelector((state)=>state.user);
+
+   const diplomaCetificates=screen<450?
+   {
+      width: "95%",
+  margin: "0 auto",
+  padding: "20px",
+  display:" flex",
+  flexDirection: "column",
+  alignItems: "center"
+   }:{
+    width:"95%",
+  display:"grid",
+  gridGap:"10px",
+  gridTemplateColumns: "repeat(auto-fit,minmax(400px,1fr))"
+   }
+
+
   return (
     <div className='about'>
 
@@ -44,19 +61,20 @@ const About = () => {
       </p> */}
     </div>
 
+    <h2 className="certificates-title">Our Achievements</h2>
 
-    <div className="diploma-certificates">
+    <div style={diplomaCetificates} className="diploma-certificates">
     
-      <h2 className="certificates-title">Our Achievements</h2>
+     
 
       <div className="certificate-item">
         <img
           src={safe}
           alt="Development and Business Management Diploma"
           className="certificate-image"
-          style={{width:screen<553?"90%":"500px"}}
+          style={{width:screen<450?"90%":"400px"}}
         />
-        {/* <p className="certificate-caption">Development and Business Management</p> */}
+     
       </div>
 
       <div className="certificate-item">
@@ -64,7 +82,7 @@ const About = () => {
           src={beauty}
           alt="Beautician Makeup Diploma"
           className="certificate-image"
-           style={{width:screen<553?"90%":"500px"}}
+           style={{width:screen<450?"90%":"400px"}}
         />
         <p className="certificate-caption">Beautician Makeup</p>
       </div>
@@ -74,7 +92,7 @@ const About = () => {
           src={massage}
           alt="Massage Therapy Diploma"
           className="certificate-image"
-          style={{width:screen<553?"90%":"500px"}}
+          style={{width:screen<450?"90%":"400px"}}
         />
         <p  className="certificate-caption">Massage Therapy</p>
       </div>
@@ -85,7 +103,7 @@ const About = () => {
           src={cutting}
           alt="Hair Cutting Technology Diploma"
           className="certificate-image"
-          style={{width:screen<553?"90%":"500px"}}
+          style={{width:screen<450?"90%":"400px"}}
         />
         <p className="certificate-caption">Hair Cutting Technology</p>
       </div>
@@ -96,7 +114,7 @@ const About = () => {
           src={aid}
           alt="Accidental Emergency Risk Management Diploma"
           // className="certificate-image"
-          style={{width:screen<553?"90%":"500px"}}
+          style={{width:screen<450?"90%":"400px"}}
         />
         <p  className="certificate-caption">Accidental Emergency Risk Management</p>
       </div>
@@ -107,7 +125,7 @@ const About = () => {
           src={business}
           alt="Development and Business Management Diploma"
           className="certificate-image"
-          style={{width:screen<553?"90%":"500px"}}
+          style={{width:screen<450?"90%":"400px"}}
         />
         <p className="certificate-caption">Development and Business Management</p>
       </div>
