@@ -219,7 +219,7 @@ const CategoryPage = () => {
 
   return (
     <>
-      {service?.length<1 ? (
+      {service===null ? (
         <div
           style={{
             width: "100%",
@@ -262,7 +262,7 @@ const CategoryPage = () => {
               {categoryName
                 ? categoryName[0].toUpperCase() + categoryName.slice(1)
                 : ""}{" "}
-              {service?.length>=1 ? "Category":""}
+              {service!==null ? "Category":""}
             </p>}
           </div>
 
