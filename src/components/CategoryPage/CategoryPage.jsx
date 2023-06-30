@@ -107,12 +107,9 @@ const CategoryPage = () => {
 
   React.useEffect(() => {
     setLoading(true);
-    const timer = setTimeout(() => {
       dispatch(getServices());
       setLoading(false);
-    }, 2000);
-
-    return () => clearTimeout(timer); // Cleanup the timer when the component unmounts
+     // Cleanup the timer when the component unmounts
   }, []);
 
   const groomingBookingClick = (id, title, price, estimatedTime, url) => {
@@ -222,7 +219,7 @@ const CategoryPage = () => {
 
   return (
     <>
-      {loading === true ? (
+      {service?.length<1 ? (
         <div
           style={{
             width: "100%",
@@ -252,7 +249,7 @@ const CategoryPage = () => {
               padding: screen < 671 ? "0 5px 0 30px" : "0px",
             }}
           >
-            <p
+           {service?.length>=1 && <p
               style={{
                 fontSize: screen < 451 ? "2rem" : "3rem",
                 color: "#736f78",
@@ -265,8 +262,8 @@ const CategoryPage = () => {
               {categoryName
                 ? categoryName[0].toUpperCase() + categoryName.slice(1)
                 : ""}{" "}
-              Category
-            </p>
+              {service?.length>=1 ? "Category":""}
+            </p>}
           </div>
 
           <div className="category-page">{serviceDisplay}</div>
