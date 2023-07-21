@@ -133,34 +133,7 @@ const CategoryPage = () => {
     }
   });
 
-  //   console.log("\n\n\n\nserviceDisplay", serviceDisplay);
-
-  // const sendEmail = () => {
-  //   if (form.name !== "" && form.phoneNumber !== "" && form.text !== "") {
-  //     setVisible(false);
-  //     setEmailLoading(true);
-  //     const sendingMessage = `I am ${form.name}. I need this ${data.title} service. This is my phone number : ${form.phoneNumber}.
-  //           Here is the details : ${form.text}`;
-  //     axios
-  //       .post(`${BASE_URL}/email/sender`, { emailText: sendingMessage })
-  //       .then(() => {
-  //         console.log("Email sent successfully");
-  //         setEmailLoading(false);
-  //         toast.success("Message sent successfully !");
-  //         setVisible(false);
-  //         setForm({ name: "", phoneNumber: "", text: "" });
-  //         // Optionally, you can show a success message or perform any other actions
-  //       })
-  //       .catch((error) => {
-  //         console.log("Error sending email:", error);
-  //         setEmailLoading(false);
-  //         setVisible(false);
-  //         // Optionally, you can show an error message or handle the error
-  //       });
-  //   } else {
-  //     toast.error("Input fields are required !");
-  //   }
-  // };
+  
 
   async function sendWhatsAppMessage() {
     const apiUrl = "https://graph.facebook.com/v17.0/102153772927786/messages";
@@ -223,7 +196,7 @@ const CategoryPage = () => {
         <div
           style={{
             width: "100%",
-            minHeight: "80vh",
+            minHeight: "90vh",
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
