@@ -5,6 +5,7 @@ import { store } from './store';
 import {Provider} from "react-redux";
 import {BrowserRouter} from "react-router-dom";
 import {disableReactDevTools} from "@fvilers/disable-react-devtools";
+import {HelmetProvider} from "react-helmet-async";
 
 if(process.env.REACT_APP_NODE_ENV==="production") disableReactDevTools()
 
@@ -13,9 +14,10 @@ root.render(
   <React.StrictMode>
     <Provider store={store}>
       <BrowserRouter>
+      <HelmetProvider>
       <App />
+      </HelmetProvider>
       </BrowserRouter>
-
     </Provider>
  
   </React.StrictMode>

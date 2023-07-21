@@ -7,6 +7,7 @@ import Categories from "../../admin/Categories/Categories";
 import { getSlider, sliderReset } from "../../features/sliderSlice";
 import { getCategory } from "../../features/categorySlice";
 import { whiteNotNeededPage } from "../../features/userSlice";
+import { Helmet } from "react-helmet-async";
 
 const Home = () => {
   // console.log("catego", categorydata);
@@ -40,6 +41,14 @@ const Home = () => {
  // console.log(categoryDisplay);
 
   return (
+    <>
+
+    <Helmet>
+<title>Thisara Salon</title>
+<meta name="description" content="Welcome to Thisara Salon - Your ultimate destination for top-notch men's grooming services. We offer a range of services including haircuts, beard grooming, relaxing massages, and grooming packages. Our expert stylists are dedicated to providing you with the best grooming experience. Book an appointment now and look your best!"/>
+<link rel="canonical" href="/" />
+    </Helmet>
+
     <div className="home">
     
       <div
@@ -96,6 +105,8 @@ const Home = () => {
 
       <div className="category-container">{categoryDisplay}</div>
     </div>
+
+    </>
   );
 };
 

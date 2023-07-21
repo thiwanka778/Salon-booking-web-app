@@ -19,6 +19,7 @@ import DialogTitle from "@mui/material/DialogTitle";
 import Button from "@mui/material/Button";
 import { getCategory } from "../../features/categorySlice";
 import { whiteNotNeededPage } from "../../features/userSlice";
+import { Helmet } from "react-helmet-async";
 const { TextArea } = Input;
 
 const CategoryPage = () => {
@@ -192,6 +193,12 @@ const CategoryPage = () => {
 
   return (
     <>
+    <Helmet>
+      <title>Category</title>
+      <meta name="description" content='Discover our wide range of services at Thisara Salon, including haircuts, beard grooming, relaxing massages, and grooming packages. Enhance your grooming experience with our expert stylists and top-notch services.'/>
+      <link  rel="canonical"  href="/category/:id"/>
+    </Helmet>
+
       {service===null ? (
         <div
           style={{
