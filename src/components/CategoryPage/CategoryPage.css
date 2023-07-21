@@ -6,7 +6,7 @@
     scroll-behavior: smooth;
   }
   .category-page{
-    min-height: 80vh;
+    min-height: 90vh;
     width:"100%";
     display:flex;
     flex-direction: column;
