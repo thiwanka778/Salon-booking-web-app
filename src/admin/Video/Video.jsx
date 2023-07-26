@@ -148,6 +148,10 @@ if(videoLoading===false){
     dispatch(getVideo());
     toast.success("Deleted Successfully !");
     dispatch(videoReset());
+  }else if(videoErrorMessage=="Not authorized"){
+    dispatch(openModal());
+    dispatch(userLogout());
+     dispatch(videoReset());
   }
 }
 },[videoLoading])
