@@ -340,6 +340,24 @@ justify-content: center;
       clip-path: inset(0 0 0 100%);
     }
   }
+
+
+  /* styles.css */
+.see-more-btn {
+  background-color: #007bff; /* Blue background color */
+  color: #fff; /* White text color */
+  border: none; /* Remove the border */
+  padding: 10px 20px; /* Add some padding to the button */
+  border-radius: 4px; /* Add rounded corners */
+  font-size: 16px; /* Adjust the font size */
+  cursor: pointer; /* Show a pointer cursor on hover */
+  transition: background-color 0.3s ease; /* Add a smooth transition */
+}
+
+.see-more-btn:hover {
+  background-color: #0056b3; /* Darker blue color on hover */
+}
+
    
   
 

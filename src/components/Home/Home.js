@@ -8,11 +8,14 @@ import { getSlider, sliderReset } from "../../features/sliderSlice";
 import { getCategory } from "../../features/categorySlice";
 import { whiteNotNeededPage } from "../../features/userSlice";
 import { Helmet } from "react-helmet-async";
+import { getVideo } from "../../features/videoSlice";
+import ReactPlayer from "react-player";
 
 const Home = () => {
   // console.log("catego", categorydata);
   const navigate = useNavigate();
   const { categoryArray } = useSelector((state) => state.category);
+  const {videoArray}=useSelector((state)=>state.video);
   const { slider, sliderLoading, sliderSuccess } = useSelector(
     (state) => state.slider
   );
@@ -21,7 +24,7 @@ const Home = () => {
 
   React.useEffect(() => {
     dispatch(getSlider());
-
+dispatch(getVideo());
     dispatch(getCategory());
   }, []);
   React.useEffect(() => {
@@ -104,6 +107,43 @@ const Home = () => {
     </div>
 
       <div className="category-container">{categoryDisplay}</div>
+
+{videoArray?.length>=1 && <div style={{width:"100%",display:"flex",alignItems:"center",justifyContent:"center",marginTop:"1.5rem"}}>
+<p style={{letterSpacing:"0.1rem",fontSize:"2rem",
+fontFamily:" 'Ubuntu', sans-serif", }}>Our Work</p>
+</div>}
+
+     {videoArray?.length>=1 && <div style={{width:"100%",display:"flex",
+      flexDirection:"column",marginBottom:"2rem",
+      alignItems:"center",marginTop:"2rem",padding:"1rem",}}>
+
+        {
+          videoArray?.map((item,index)=>{
+            const len=videoArray?.length;
+            const lastVideoNumber=len-1;
+            const rindex=lastVideoNumber-2;
+            if(index>=rindex){
+              return (
+                <div style={{width:screen<850?"100%":"800px",marginBottom:"2.5rem",padding:"1rem",
+                boxShadow:" rgba(0, 0, 0, 0.35) 0px 5px 15px  ",borderRadius:"8px"  }} key={item?._id}>
+                <ReactPlayer url={item?.url} controls width="100%" height="auto" />
+              {item?.title!=="" &&  <div style={{width:"100%",display:"flex",alignItems:"center",justifyContent:"flex-end",marginTop:"0.5rem"}} >
+                    <p>{item?.title}</p>
+                </div>}
+                </div>
+              )
+            }
+               
+          })
+        }
+         
+      </div>}
+
+{videoArray?.length>=1  &&  <div style={{width:"100%",display:"flex",alignItems:"center",justifyContent:"center",marginBottom:"2rem"}}>
+<button className="see-more-btn" onClick={()=>navigate("/video-page")}>See more</button>
+      </div>}
+
+
     </div>
 
     </>

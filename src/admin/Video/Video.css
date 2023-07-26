@@ -1,0 +1,59 @@
+.video{
+    width:100%;
+    padding-top: 120px;
+    min-height: 90vh;
+    padding-bottom: 2rem;
+}
+
+.upload-button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    font-family: 'Poppins', sans-serif ;
+    letter-spacing: 0.1rem;
+  }
+  
+  .upload-button:active {
+    transform: scale(0.7);
+  }
+  
+  .upload-button:focus {
+    outline: none;
+  }
+
+  .save-button{
+    background-color:#04ba56;
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    font-size: 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    font-family: 'Poppins', sans-serif ;
+    letter-spacing: 0.1rem;
+  }
+  .save-button:active{
+    transform: scale(0.7);
+  }
+.delete-btn{
+    background-color:red;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    font-size:1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    font-family: 'Poppins', sans-serif ;
+    letter-spacing: 0.1rem;
+}
+
+.delete-btn:active{
+    transform: scale(0.7);
+}

@@ -22,6 +22,7 @@ import AddToPhotosIcon from "@mui/icons-material/AddToPhotos";
 import salonLogo2 from "../../assets/salonLogo.png";
 import EditIcon from "@mui/icons-material/Edit";
 import { useNavigate } from "react-router-dom";
+import OndemandVideoIcon from '@mui/icons-material/OndemandVideo';
 import { Input } from "antd";
 
 const Header = () => {
@@ -274,6 +275,14 @@ const Header = () => {
             <MenuItem onClick={handleClose}>
               <EditIcon />
               &nbsp; Edit Categories
+            </MenuItem>
+          </NavLink>
+        )}
+         {user?.userType === "admin" && (
+          <NavLink to="/edit-video" className="nav-link-style-menu">
+            <MenuItem onClick={handleClose}>
+              <OndemandVideoIcon />
+              &nbsp; Edit Video
             </MenuItem>
           </NavLink>
         )}

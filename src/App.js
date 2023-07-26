@@ -22,6 +22,9 @@ import EditCategory from "./admin/EditCategory/EditCategory";
 import About from "./components/About/About";
 import Footer from "./components/Footer/Footer";
 import NoMatch from "./components/NoMatch/NoMatch";
+import Video from "./admin/Video/Video";
+import VideoPage from "./components/VideoPage/VideoPage";
+import VideoPageAuth from "./protected/VideoPageAuth";
 
 
 function App() {
@@ -95,8 +98,13 @@ function App() {
 
             <Route path="/" element={<Home />} />
             <Route path="category/:id" element={<CategoryPage/>}/>
+           
             <Route path="about" element={<About/>}/>
             <Route path="*" element={<NoMatch/>}/>
+
+            <Route element={<VideoPageAuth/>}>
+            <Route path="video-page" element={<VideoPage/>}/>
+            </Route>
 
             <Route element={<RequiredAuth />}>
               {/* <Route path="sign-up" element={<SignUp />} /> */}
@@ -108,6 +116,7 @@ function App() {
               <Route path="edit-category" element={<EditCategory/>}/>
               <Route path="slider-images" element={<SliderImages />} />
               <Route path="service" element={<Service />} />
+              <Route path="edit-video" element={<Video/>}/>
             </Route>
 
           
