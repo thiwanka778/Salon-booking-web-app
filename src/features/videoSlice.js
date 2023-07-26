@@ -8,6 +8,7 @@ const initialState = {
   videoCreatingSuccess: false,
   videoDeleteSuccess: false,
   videoArray:[],
+  isVideo:false,
 };
 
 // create category
@@ -109,7 +110,7 @@ const videoSlice = createSlice({
     builder
       .addCase(getVideo.pending, (state) => {
        state.videoLoading=true;
-       state.videoArray=[];
+     
       })
       .addCase(getVideo.fulfilled, (state, action) => {
         state.videoLoading=false;
@@ -118,7 +119,7 @@ const videoSlice = createSlice({
       })
       .addCase(getVideo.rejected, (state, action) => {
         state.videoLoading=false;
-        state.videoArray=[];
+       
        
       })
 

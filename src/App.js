@@ -25,6 +25,7 @@ import NoMatch from "./components/NoMatch/NoMatch";
 import Video from "./admin/Video/Video";
 import VideoPage from "./components/VideoPage/VideoPage";
 import VideoPageAuth from "./protected/VideoPageAuth";
+import { getVideo } from "./features/videoSlice";
 
 
 function App() {
@@ -86,6 +87,10 @@ function App() {
   const handleClose = () => {
     dispatch(closeModal())
   };
+
+  React.useEffect(()=>{
+dispatch(getVideo)
+  },[])
 
  
   return (
